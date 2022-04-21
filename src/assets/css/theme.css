@@ -1,0 +1,76 @@
+/**
+ * 开店星新零售管理系统
+ * @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
+ * @author 青岛开店星信息技术有限公司
+ * @link https://www.kaidianxing.com
+ * @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
+ * @copyright 版权归青岛开店星信息技术有限公司所有
+ * @warning Unauthorized deletion of copyright information is prohibited.
+ * @warning 未经许可禁止私自删除版权信息
+ */
+:root {
+
+  /*主题色*/
+  --theme-submenuBackground: #E2EBFB;
+  --theme-navBackground: #1F65D7;
+  --theme-color: #1F65D7;
+
+
+  --decorate-color:#2d8cf0;
+  --theme-light: #F0FAFF;
+  --theme-hover: #FAFDFF;
+  --danger-color: #ff1f2c;
+  --danger-light: #fff1f2;
+  --danger-hover: #FFFAFA;
+  --warning-color: #ff9900;
+  --warning-light: #FFF9E6;
+  --warning-hover: #FFFDF9;
+  --success-color: #19be6b;
+  --success-light: #EDFFF3;
+  --success-hover: #FAFFFC;
+  --text-first: #262B30;
+  --text-second: #636669;
+  --text-third: #939799;
+  --text-zhushi: #b8b9bd;
+  --border-color: #e9edef;
+  --border-bg-color: #e0e0e0;
+  /* 背景色 */
+  --background-color: #F4F6F8;
+  --disable-color: #cccccc;
+  --menu-nav-bg-color: #24242e;
+  --menu-nav-active-bg-color: #111216;
+  --shade-color: rgba(0, 0, 0, 0.8); 
+  --shadow-card: 0px 1px 4px rgba(133, 148, 162, 0.2);
+  --global-disable: #F0F4F6;
+  --global-bg3: #FBFCFF;
+  --data-blue: #4A67FF;
+  --data-green: #43DBA3;
+  --data-orange: #F66000;
+  --data-red: #F65290;
+  --data-purple: #8F80FF;
+  --data-yellow: #F4C900;
+  --data-bg-liner: linear-gradient(180deg, #F7F8FF 0%, #FFFFFF 100%);
+  --data-blue2: #39A7F1;
+  --data-liner-blue: linear-gradient(180deg, #4A67FF 14.2%, rgba(74, 103, 255, 0.1) 100%);
+  --data-liner-goods: linear-gradient(180deg, #FFFBF7 0%, #FFFFFF 100%);
+  --data-liner-vip: linear-gradient(180deg, #F7FFF9 0%, #FFFFFF 100%);
+  --channel-weixin: #1BB723;
+  --channel-weixinxiaochengxu: #677DE0;
+  --channel-browser: #1EBBEE;
+  --channel-alipay: #2094E7;
+  --channel-baidu: #306CFF;
+  --channel-toutiao: #239BFF;
+  --channel-douyin: #1F0A1C;
+  --channel-weixinxiaochengxu2: #FAFAFF;
+  --channel-wxapp-bg: #FAFAFF; 
+  --channel-baidu-bg: #FAFBFF; 
+  --channel-toutiao-bg: #FAFDFF; 
+  --channel-alipay-bg: #FAFCFF;
+  --channel-wechat-bg: #FAFFFC;
+  --uni-color-primary: #ff3c29;
+  --uni-text-color: #212121;
+  --uni-text-color-grey: #969696;
+  --uni-bg-color-grey: #f5f5f5;
+  --uni-border-color: #E6E7EB;
+  --tab-hover:#57a3f3;
+}

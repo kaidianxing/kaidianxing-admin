@@ -1,0 +1,6 @@
+assets/image/replace/avatar.png
+assets/image/replace/check-template.png
+assets/image/replace/using-page.png
+assets/image/replace/video.png
+assets/image/replace/video-cover.png
+assets/image/replace/check-template.png

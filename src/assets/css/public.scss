@@ -1,0 +1,220 @@
+/**
+ * 开店星新零售管理系统
+ * @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
+ * @author 青岛开店星信息技术有限公司
+ * @link https://www.kaidianxing.com
+ * @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
+ * @copyright 版权归青岛开店星信息技术有限公司所有
+ * @warning Unauthorized deletion of copyright information is prohibited.
+ * @warning 未经许可禁止私自删除版权信息
+ */
+/*
+* 全局公共样式
+*/
+// color
+$brand-color: var(--theme-color);
+$brand-light: var(--brand-light);
+$brand-hover: var(--theme-hover);
+$danger-color: var(--danger-color);
+$danger-light: var(--danger-light);
+$danger-hover: var(--danger-hover);
+$warning-color: var(--warning-color);
+$warning-light: var(--warning-light);
+$warning-hover: var(--warning-hover);
+$success-color: var(--success-color);
+$success-light: var(--success-light);
+$success-hover: var(--success-hover);
+$text-first: var(--text-first);
+$text-second: var(--text-second);
+$text-third: var(--text-third);
+$text-zhushi: var(--text-zhushi);
+$border-color: var(--border-color);
+$border-bg-color: var(--border-bg-color);
+$background-color: var(--background-color);
+$disable-color: var(--disable-color);
+$menu-nav-bg-color: var(--menu-nav-bg-color);
+$menu-nav-active-bg-color: var(--menu-nav-active-bg-color);
+$shade-color: rgba(0, 0, 0, 0.8); // 遮罩
+$shadow-card: 0px 1px 4px rgba(133, 148, 162, 0.2);
+$global-disable: var(--global-disable);
+$global-bg3:var(--global-bg3);
+$tab-hover:var(--tab-hover);
+// 数据颜色
+$data-blue: var(--data-blue);
+$data-green: var(--data-green);
+$data-orange: var(--data-orange);
+$data-red: var(--data-red);
+$data-purple:var(--data-purple);
+$data-yellow: var(--data-yellow);
+$data-bg-liner: linear-gradient(180deg, #F7F8FF 0%, #FFFFFF 100%);
+$data-bg-purple: linear-gradient(180deg, #F7F7FF 0%, #FFFFFF 100%);
+$data-blue2: var(--data-blue2);
+$data-liner-blue: linear-gradient(180deg, #4A67FF 14.2%, rgba(74, 103, 255, 0.1) 100%);
+$data-liner-goods: linear-gradient(180deg, #FFFBF7 0%, #FFFFFF 100%);
+$data-liner-vip: linear-gradient(180deg, #F7FFF9 0%, #FFFFFF 100%);
+// 渠道颜色
+$channel-weixin:var(--channel-weixin);
+$channel-weixinxiaochengxu: var(--channel-weixinxiaochengxu);
+$channel-browser: var(--channel-browser);
+$channel-alipay: var(--channel-alipay);
+$channel-baidu: var(--channel-baidu);
+$channel-toutiao: var(--channel-toutiao);
+$channel-douyin: var(--channel-douyin);
+$channel-weixinxiaochengxu2: var(--channel-weixinxiaochengxu2);
+//
+$channel-wxapp-bg: var(--channel-wxapp-bg); // 微信小程序背景色
+$channel-baidu-bg: var(--channel-baidu-bg); // 百度小程序背景色
+$channel-toutiao-bg: var(--channel-toutiao-bg); // 头条 抖音 小程序背景色
+$channel-alipay-bg: var(--channel-alipay-bg); // 支付宝 小程序背景色
+$channel-wechat-bg: var(--channel-wechat-bg); // 公众号 小程序背景色
+
+$uni-color-primary:var(--uni-color-primary);
+$uni-text-color:var(--uni-text-color);
+$uni-text-color-grey:var(--uni-text-color-grey);
+$uni-bg-color-grey:var(--uni-bg-color-grey);
+$uni-border-color:var(--uni-border-color);
+// font 命名规范 font-size-(line-height)-weight
+// 12
+@mixin font-12-16 {
+  font: {
+    size: 12px;
+  }
+  line-height: 16px;
+}
+@mixin font-12-16-bold {
+  font: {
+    size: 12px;
+    weight: bold;
+  }
+  line-height: 16px;
+}
+@mixin font-12-18 {
+  font-size: 12px;
+  line-height: 18px;
+}
+@mixin font-12-24 {
+  font-size: 12px;
+  line-height: 24px;
+}
+// 14
+@mixin font-14-20 {
+  font: {
+    size: 14px;
+    weight: normal;
+  }
+  line-height: 20px;
+}
+@mixin font-14-20-bold {
+  font: {
+    size: 14px;
+    weight: bold;
+  }
+  line-height: 20px;
+}
+// 16
+@mixin font-16-22 {
+  font-size: 16px;
+  line-height: 22px;
+}
+@mixin font-16-22-bold {
+  font: {
+    size: 16px;
+    weight: bold;
+  }
+  line-height: 22px;
+}
+@mixin font-18-25 {
+  font-size: 18px;
+  line-height: 25px;
+}
+@mixin font-18-25-bold {
+  font: {
+    size: 18px;
+    weight: bold;
+  }
+  line-height: 25px;
+}
+// 大标题 24
+@mixin font-24-34-bold {
+  font: {
+    size: 24px;
+    weight: bold;
+  }
+  line-height: 34px;
+}
+@mixin font-32-39-500 {
+  font: {
+    size: 32px;
+    weight:500;
+  }
+  line-height:39px;
+}
+@mixin font-30-36-500 {
+  font: {
+    size: 30px;
+    weight: 500;
+  }
+  line-height: 36px;
+}
+// 文本单行省略
+@mixin font-single-omit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+}
+// 多行文本省略
+@mixin font-multiple-omit($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line; /*控制哪一行超出显示....*/
+  -webkit-box-orient: vertical;
+}
+.ivu-menu-vertical.ivu-menu-light:after {
+  background: rgba(0, 0, 0, 0)
+}
+.iconfont {
+  &.icon-move {
+    font-size: 26px;
+    color: white;
+  }
+}
+@function rpx($n) {
+  @return $n/2/307*375+px;
+}
+
+@function px2rpx($n) {
+  @return $n+px;
+}
+
+
+.icon-selector{
+  .ivu-modal-mask,
+  .ivu-modal-wrap{
+    z-index: 999999!important;
+  }
+}
+.diymenu .list .submenu-box{//装修的功能
+  z-index: 100!important;
+
+}
+
+.phone-main {
+  .gotop,.danmu,.layer,.customer {
+    z-index: 1003!important;
+  }
+} 
+
+.ivu-drawer-wrap {
+  z-index: 1100!important;
+}
+
+.noManagePerm{
+  cursor: not-allowed!important;
+  opacity: 0.5!important;
+}
+
+.van-slider__bar {
+  background: var(--theme-color)!important;
+}

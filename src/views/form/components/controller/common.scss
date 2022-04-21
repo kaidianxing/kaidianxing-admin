@@ -1,0 +1,228 @@
+/**
+ * 开店星新零售管理系统
+ * @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
+ * @author 青岛开店星信息技术有限公司
+ * @link https://www.kaidianxing.com
+ * @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
+ * @copyright 版权归青岛开店星信息技术有限公司所有
+ * @warning Unauthorized deletion of copyright information is prohibited.
+ * @warning 未经许可禁止私自删除版权信息
+ */
+.controller-item {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 16px 0;
+    border: 1px solid $border-color;
+    border-radius: 2px;
+    color: $text-first;
+    /deep/ .ivu-input-word-count {
+        z-index: 5;
+    }
+    > div {
+        box-sizing: border-box;
+        padding-right: 16px;
+    }
+    .flex-shrink {
+        flex-shrink: 0 !important;
+    }
+    .flex0 {
+        flex: initial !important;
+    }
+    .align-end {
+        align-items: flex-end !important;
+    }
+    .height-100 {
+        height: 100%;
+    }
+    // 图标标题
+    > .title-icon {
+        display: flex;
+        align-items: center;
+        width: 130px;
+       > .iconfont {
+           padding: 10px;
+           font-size: 24px;
+           color: $text-zhushi;
+           cursor: move;
+       }
+        > .title {
+            @include font-14-20-bold;
+        }
+    }
+    // input-标题
+    > .input-title {
+        width: 200px;
+    }
+    // 中间表单配置
+    > .input-middle-box {
+        display: flex;
+        flex-wrap: nowrap;
+        flex: 1;
+        .input-middle-item {
+            display: flex;
+            align-items: center;
+           flex: 1;
+            box-sizing: border-box;
+            padding-right: 10px;
+            &:last-child {
+                padding-right: 0;
+            }
+            .label {
+                flex-shrink: 0;
+                @include font-14-20-bold;
+                padding-right: 10px;
+            }
+            &.flex-column {
+                align-items: flex-start;
+                .middle-item-item {
+                    padding-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    .ivu-date-picker {
+                        width: 100%;
+                    }
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+        // 多行显示
+        &.multi-line {
+            flex-direction: column;
+            >.input-middle-item {
+                padding: 0 0 10px 0;
+                &:last-child {
+                    padding-bottom: 0;
+                }
+                .middle-item-item {
+                    padding-right: 10px;
+                    align-items: center;
+                    flex: 1;
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+        // 日期
+        &.input-middle-datepicker {
+            >.input-middle-item {
+                padding-bottom: 10px;
+                padding-right: 0;
+                .input-middle-item {
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+                &.date-pick {
+                    padding-bottom: 0;
+                    .middle-item-item {
+                        flex: 1;
+                        .ivu-date-picker {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 是否必填
+    .is-required {
+        flex-shrink: 0;
+        width: 100px;
+        .switch-text {
+            @include font-12-16;
+            padding-left: 6px;
+        }
+    }
+    // 删除
+    .delete-btn {
+        text-align: center;
+        flex-shrink: 0;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 1750px) {
+    .controller-item {
+        .input-middle-box {
+            flex-direction: column;
+            margin-bottom: -10px;
+            .input-middle-item {
+                padding-bottom: 10px;
+                padding-right: 0;
+                width: 100%;
+                box-sizing: border-box;
+                flex-direction: column;
+            }
+            &.multi-line {
+                .input-middle-item {
+                    flex-direction: row;
+                    padding-bottom: 10px !important;
+                    &.input-selector {
+                        flex-direction: column;
+                    }
+                    &.input-city-explain {
+                        flex-direction: column;
+                    }
+                    &.input-city {
+                        flex-direction: column;
+                        .middle-item-item {
+                            width: 100%;
+                            height: 100%;
+                            padding-bottom: 20px;
+                            padding-right: 0;
+                            align-items: center;
+                            &:last-child {
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            &.input-daterange {
+                //padding-bottom: 10px;
+                >.input-middle-item {
+                    flex-direction: column;
+                    margin-bottom: 0 !important;
+                    padding-bottom: 0 !important;
+                    &>.input-middle-item {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        &.flex-column {
+                            flex-direction: column;
+                            padding-bottom: 10px;
+                        }
+                    }
+                    .input-daterange-data {
+                        //padding-top: 10px;
+                        padding-bottom: 0 !important;
+                        .input-middle-item {
+                            padding-bottom: 10px !important;
+                        }
+                    }
+                }
+            }
+            &.input-middle-datepicker {
+                >.input-middle-item {
+                    padding-bottom: 0;
+                    &:first-child{
+                        padding-bottom: 10px !important;
+                    }
+                    &.date-pick {
+                        .middle-item-item {
+                            width: 100%;
+                            &:first-child {
+                                padding-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

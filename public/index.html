@@ -1,0 +1,80 @@
+<!--
+     开店星新零售管理系统
+     @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
+     @author 青岛开店星信息技术有限公司
+     @link https://www.kaidianxing.com
+     @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
+     @copyright 版权归青岛开店星信息技术有限公司所有
+     @warning Unauthorized deletion of copyright information is prohibited.
+     @warning 未经许可禁止私自删除版权信息
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico"/>
+    <title></title>
+    <!-- loading...动画 -->
+    <link rel="stylesheet" href="/static/dist/shop/css/loading.css">
+    <!-- 移动端 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1534025_3r4j1r8yrkq.css"/>
+    <!--自定义链接 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1872121_xxkupf2vsz.css"/>
+    <!-- 后台 -->
+    <!--        <link rel="stylesheet" href="//at.alicdn.com/t/font_1534020_5xmtgx5idbm.css"/>-->
+    <!-- 开店星-后台 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3137624_9xlj9hv4is4.css"/>
+    <!-- 装修官方 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2199488_00ye6ht7d6zp.css"/>
+    <!-- remixicon新 -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2199566_7pueb97i5h.css"/>
+
+    <style>
+        /* remixicon图标库 */
+        [class^="ri-"],
+        [class*=" ri-"] {
+            font-family: "iconfont-def";
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        [class^="ri-"]::before,
+        [class*=" ri-"]::before {
+            content: "\e7dd";
+        }
+    </style>
+
+    <script>
+        window.config = null
+    </script>
+</head>
+<body>
+<!-- loading...动画 -->
+<div class="app-loading " id='app-loading'>
+    <div class="loading-spinner">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill-opacity="0" fill="none"/>
+        </svg>
+        <p class="text">正在加载...</p>
+    </div>
+</div>
+<div id='app'></div>
+<script>
+    window.requestAnimationFrame = (function () {
+        return (
+                window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60)
+                }
+        )
+    })()
+</script>
+<script src="https://cdn.bootcss.com/three.js/r83/three.min.js" async></script>
+<!-- built files will be auto injected -->
+</body>
+</html>

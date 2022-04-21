@@ -1,0 +1,173 @@
+/**
+ * 开店星新零售管理系统
+ * @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
+ * @author 青岛开店星信息技术有限公司
+ * @link https://www.kaidianxing.com
+ * @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
+ * @copyright 版权归青岛开店星信息技术有限公司所有
+ * @warning Unauthorized deletion of copyright information is prohibited.
+ * @warning 未经许可禁止私自删除版权信息
+ */
+<template>
+    <kdx-modal-frame
+        :value="value"
+        title="活动数据"
+        :width="1000"
+        :loading="loading"
+        @on-cancel="handleCancel"
+    >
+        <div class="content">
+            <Table :columns="columns" :data="data">
+                <template slot-scope="{ row }" slot="goods">
+                    <div class="goods">
+                        <img
+                            class="goods-thumb"
+                            :src="$media(row.thumb)"
+                            alt=""
+                            @error="replaceImage"
+                        />
+                        <div>
+                            <div class="two-line-hide goods-title">
+                                {{ row.title }}
+                            </div>
+                            <div class="goods-options" v-if="row.option_title">
+                                {{ row.option_title }}
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </Table>
+        </div>
+        <template #footer>
+            <kdx-page-component
+                ref="page"
+                :total="total"
+                @on-change="handlePageChange"
+                limit-default
+            ></kdx-page-component>
+        </template>
+    </kdx-modal-frame>
+</template>
+
+<script>
+export default {
+    props: {
+        id: {
+            type: String,
+            required: true,
+        },
+        value: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    watch: {
+        value(newVal) {
+            if (newVal) {
+                this.getList();
+            }
+        },
+    },
+    data() {
+        return {
+            total: 0,
+            page: {
+                pageNumber: 1,
+                pageSize: 10,
+            },
+            columns: [
+                {
+                    title: "商品",
+                    key: "",
+                    slot: "goods",
+                    width: 295,
+                },
+                {
+                    title: "成交订单",
+                    key: "order_count",
+                },
+                {
+                    title: "成交金额",
+                    key: "pay_price",
+                },
+                {
+                    title: "退款金额",
+                    key: "refund_price",
+                },
+                {
+                    title: "销售数量",
+                    key: "total",
+                },
+                {
+                    title: "成交人数",
+                    key: "member_count",
+                },
+            ],
+            data: [],
+            loading: false,
+        };
+    },
+    methods: {
+        getList() {
+            let params = {
+                page: this.page.pageNumber,
+                pagesize: this.page.pageSize,
+                id: this.id,
+            };
+            this.$api.seckillApi.getSeckillData(params).then((res) => {
+                if (res.error === 0) {
+                    this.data = res.list;
+                    this.total = res.total;
+                }
+            });
+        },
+        handleCancel() {
+            this.$emit("on-close");
+        },
+        handlePageChange(page) {
+            this.page = page;
+            this.getList();
+        },
+    },
+};
+</script>
+
+<style lang="scss" scoped>
+.content {
+    padding: 0 20px 0;
+    max-height: calc(100vh - 110px - 160px - 75px);
+    .goods {
+        display: flex;
+        .goods-thumb {
+            display: block;
+            margin-right: 10px;
+            border: 1px solid #e9edef;
+            box-sizing: border-box;
+            border-radius: 2px;
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .goods-title {
+            @include font-multiple-omit(2);
+            font-size: 14px;
+            line-height: 20px;
+            color: #262b30;
+            height: 40px;
+        }
+
+        .goods-options {
+            padding: 2px 8px;
+            position: relative;
+            display: inline-block;
+            border-radius: 2px;
+            box-sizing: border-box;
+            color: #2d8cf0;
+            background-color: #f0faff;
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+}
+</style>
