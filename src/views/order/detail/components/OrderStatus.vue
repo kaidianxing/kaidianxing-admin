@@ -112,7 +112,7 @@
                     <div class="footer-btn" >
                         <div style="display: inline-block" >
                             <Button class="default-primary" :disabled='!permMap.cancel_send' @click="cancelSendGoods"
-                                    v-if="goods_type === '0'">
+                                    v-if="goods_type === '0' && data.scene != '20'">
                                 取消发货
                             </Button>
                             <Button class="default-primary" :disabled='!permMap.edit_address' @click="editReceiveInfo"
@@ -123,7 +123,7 @@
                             <Button class="default-primary" :disabled='!permMap.close_refund' @click="generalRefund" v-if="data.pay_type == '3' || goods_type === '1'">退款</Button>
                         </div>
                         <template>
-                            <Button class="default-primary" @click="generalRefund" :disabled='!permMap.close_refund'>退款</Button>
+                            <Button class="default-primary" @click="generalRefund" v-if="data.scene != '20'" :disabled='!permMap.close_refund'>退款</Button>
                         </template>
                     </div>
                 </template>

@@ -47,7 +47,7 @@ export default {
             type: 'line',
             name: '辅助线',
             icon: 'ivu-icon ivu-icon-ios-crop'
-        }, 
+        },
         {
             type: 'tabbar',
             name: '标签页',
@@ -105,6 +105,11 @@ export default {
             type: 'seckill',
             name: '秒杀',
             svg: 'seckill'
+        },
+        {
+            type: 'wxTransaction',
+            name: '视频号直播',
+            icon: 'iconfont icon-zhibo-mian'
         },
     ],
     other: [{

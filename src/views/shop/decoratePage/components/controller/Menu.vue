@@ -25,14 +25,14 @@
                     <MyRadioGroup :items='colCount' v-model='currentModal.style.rownum' @change="changeRownum"></MyRadioGroup>
                 </form-item>
             </MyCollapse>
-            
+
             <MyCollapse>
                 <p class="form-title" slot='label'>
                     内容
                 </p>
                 <form-item :label-width="0">
                     <MyDragSortableItems :list='currentModal.data' @end='dragEnd' @delItem='delItem'>
-                        <template v-slot='{item}'> 
+                        <template v-slot='{item}'>
                             <MyTopMenuItem nodel label1='按钮文字：' label2='跳转链接：' :item='item' @on-change='getInput(item,$event)'  @change-link='changeLink(item,$event)'>
                                 <template #prepend>
                                     <div style='display:flex;margin-bottom:6px;'>
@@ -83,7 +83,7 @@
                     ></MyDraggableProgress>
                 </form-item>
             </MyCollapse>
-           
+
         </i-form>
     </div>
 </template>
@@ -147,7 +147,9 @@
                     linkurl: '',
                     text: '按钮文字' + len,
                     color: this.currentModal.style.color,
-                    wxappid: ''
+                    wxappid: '',
+                    video_id: '',
+                    keyLink:''
                 });
                 this.refreshCurrentModal();
             },
@@ -157,9 +159,11 @@
                     this.currentModal.data.push({
                         imgurl: '',
                         linkurl: '',
-                        text: '按钮文字' + (rownum+i),    
+                        text: '按钮文字' + (rownum+i),
                         color: this.currentModal.style.color,
-                        wxappid: ''
+                        wxappid: '',
+                        video_id: '',
+                        keyLink:''
                     })
                 }
             },
@@ -174,6 +178,8 @@
                 item.wxappid = val.wxappid
                 item.linkurl = val.url;
                 item.linkurl_name = val.name;
+                item.video_id = val.video_id;
+                item.keyLink = val.keyLink;
             },
             getInput(item, val) {
                 item.text = val;

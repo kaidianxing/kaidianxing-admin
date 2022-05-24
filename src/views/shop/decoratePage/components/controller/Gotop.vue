@@ -64,11 +64,13 @@
                                 <MySelectLink :value='{
                                     url: currentModal.params.linkurl,
                                     name: currentModal.params.linkurl_name,
-                                    wxappid: currentModal.params.wxappid
+                                    wxappid: currentModal.params.wxappid,
+                                    video_id: currentModal.params.video_id,
+                                    keyLink: currentModal.params.keyLink,
                                 }' @change='changeLink' ></MySelectLink>
                             </form-item>
                         </MyRadioGroup>
-                    </form-item> 
+                    </form-item>
                 </div>
             </MyCollapse>
         </i-form>
@@ -114,6 +116,8 @@
                 this.currentModal.params.linkurl = val.url;
                 this.currentModal.params.linkurl_name = val.name
                 this.currentModal.params.wxappid = val.wxappid
+                this.currentModal.params.video_id = val.video_id
+                this.currentModal.params.keyLink = val.keyLink
             }
         }
     }

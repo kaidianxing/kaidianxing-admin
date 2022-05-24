@@ -229,7 +229,36 @@
         }
     };
 </script>
+<style  lang="scss">
+.preview-poster-modal{
 
+    .ivu-modal{
+        width:700px;
+        position: relative;
+    }
+    .poster-phone{
+        width:300px;
+        display:block;
+        margin:40px auto 60px;
+    }
+    .poster-img{
+        position:absolute;
+        top: 170px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 259px;
+        height: 458px;
+    }
+    .ivu-modal-body{
+        overflow: hidden;
+    }
+    .ivu-modal-footer{
+        display:none;
+    }
+}
+</style>
+</style>
 <style scoped lang="scss">
 .shop-system-page {
     margin: 20px auto;

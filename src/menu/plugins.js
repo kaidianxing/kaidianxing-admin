@@ -14,7 +14,7 @@
  * @/menu/plugins 与 @/router/plugins 中的文件一一对应
  */
 import { menuTraverser } from '../assets/jsTools/traverser.js'
-let paths = require.context('./', false, /\/.*Plugin\.js$/);//获取当前全部路由
+let paths = require.context('./', false, /\/.*Plugin\.js$/);//获取当前后缀 plugin文件
 let menus = {};//各个模块的路由配置集合
 let pageIndex = 0
 paths.keys().forEach(item => {

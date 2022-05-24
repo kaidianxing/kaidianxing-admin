@@ -10,18 +10,19 @@
  */
 <template>
     <div class='select-link' style='margin-bottom:10px;' @mouseenter='mouseenter'>
+        <!-- keyLink为了处理新增的视频号优化问题 -->
         <div class="body">
-            <Input class='input' disabled :value="linkInfo.name" v-if='linkInfo.url' enter-button="修改"
+            <Input class='input' disabled :value="linkInfo.name" v-if='linkInfo.url || linkInfo.keyLink' enter-button="修改"
                    style='border-left:0;flex:1;'>
                 <i slot="prepend" :class='[icon]'></i>
                 <span slot="append" v-if="enabled" style='padding:4px 16px;' @click='selectLink'>修改</span>
             </Input>
             <i-button @click='selectLink' style='padding:4px 6px;width:100%;text-align:left;flex:1;' :icon="btnIcon"
-                      v-if='!linkInfo.url'>{{ btnText }}
+                      v-if='!linkInfo.url  && !linkInfo.keyLink'>{{ btnText }}
             </i-button>
         </div>
         <!--链接选择器-->
-      
+
         <union-selector v-model="show" v-if='loadSelector&&enabled' :tab-name="chooseTabs" :current="linkInfo"
                         @on-cancel="handleCancel" @on-change="changeLink"></union-selector>
 
@@ -34,7 +35,7 @@ import UnionSelector from '../selector/LinkUnionSelector'
 export default {
     inject: {
         'chooseTab': {
-            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkWxAppLink,LinkApplicationPlug'
+            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
         }
     },
     components: {

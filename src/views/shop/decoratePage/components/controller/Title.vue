@@ -30,7 +30,9 @@
                     <MySelectLink class="mb-0" :value='{
                         name: currentModal.params.linkurl_name,
                         url: currentModal.params.linkurl,
-                        wxappid: currentModal.params.wxappid
+                        wxappid: currentModal.params.wxappid,
+                         video_id: currentModal.params.video_id,
+                        keyLink: currentModal.params.keyLink,
                     }' @change='changeLink'></MySelectLink>
                 </form-item>
                 <form-item label="标题：">
@@ -163,7 +165,9 @@ export default {
         changeLink(val) {
             this.currentModal.params.wxappid = val.wxappid
             this.currentModal.params.linkurl = val.url;
-            this.currentModal.params.linkurl_name = val.name
+            this.currentModal.params.linkurl_name = val.name;
+            this.currentModal.params.video_id = val.video_id;
+            this.currentModal.params.keyLink = val.keyLink;
         },
         getInput(type, val) {
             if (type == 'left') {

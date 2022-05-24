@@ -34,7 +34,7 @@
                 <form-item label="" :label-width='0'>
                     <MyDragSortableItems :list='currentModal.data' @end='dragEnd' @delItem='delItem' v-if='currentModal.data'>
                         <template v-slot='{item}'>
-                            <MyAddImg draggable :item='item' url='imgurl' link='linkurl' @change-img='changeImg' @change-link='changeLink'></MyAddImg>
+                            <MyAddImg draggable :item='item' url='imgurl' link='linkurl' video_id="video_id" keyLink="keyLink" @change-img='changeImg' @change-link='changeLink'></MyAddImg>
                         </template>
                         </MyDragSortableItems>
                         <i-button :style='{width:"100%",color:$css["--theme-color"]}' @click='addItem'>+添加图片</i-button>
@@ -86,20 +86,20 @@
                 pointStyle: [{
                     label: '圆角',
                     icon: 'iconfont icon-zujian-lunbodian-yuanjiaojuxing',
-                   
-                    
+
+
                     id: 'rectangle'
                 }, {
                     label: '圆形',
                     icon: 'iconfont icon-zujian-lunbodian-yuanxing',
-                   
-                    
+
+
                     id: 'round'
                 }, {
                     label: '数字',
                     icon: 'iconfont icon-zujian-lunbodian-shuzi',
-                   
-                    
+
+
                     id: 'number'
                 }]
             }
@@ -109,14 +109,14 @@
                 let position = [{
                     label: '居左',
                     icon: 'iconfont icon-duiqi-zuoduiqi',
-                   
-                    
+
+
                     id: 'left'
                 }, {
                     label: '居右',
                     icon: 'iconfont icon-duiqi-youduiqi',
-                   
-                    
+
+
                     id: 'right'
                 }]
                 if (this.currentModal.style.dotstyle == 'number') {
@@ -125,8 +125,8 @@
                     position.splice(1, 0, {
                         label: '居中',
                         icon: 'iconfont icon-duiqi-juzhongduiqi',
-                       
-                        
+
+
                         id: 'center'
                     })
                     return position
@@ -139,7 +139,7 @@
                     if(newVal[0]) {
                         let imgurl = newVal[0].imgurl? this.$utils.media(newVal[0].imgurl) :this.$utils.staticImg('decorate/banner.png');
                         this.$utils.getImgSize(imgurl).then(img=> {
-                            let width = 750 - this.currentModal.style.marginleft 
+                            let width = 750 - this.currentModal.style.marginleft
                             let ratio = parseInt(px2rpx(width)) /img.width;
                             this.currentModal.style.imgheight = img.height * ratio
                         })
@@ -165,13 +165,17 @@
                 this.currentModal.data.push({
                     imgurl: '',
                     linkurl: '',
-                    wxappid: ''
+                    wxappid: '',
+                    video_id: '',
+                    keyLink:''
                 })
             },
             changeLink(val, item) {
                 item.wxappid = val.wxappid
                 item.linkurl = val.url;
                 item.linkurl_name = val.name;
+                item.video_id = val.video_id;
+                item.keyLink = val.keyLink;
                 this.refreshCurrentModal();
             },
             changeImg(val, item) {

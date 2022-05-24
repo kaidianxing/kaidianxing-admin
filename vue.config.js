@@ -10,7 +10,7 @@
  */
 
 const path = require('path')
-const version = '1.0.7'
+const version = '1.0.13'
 let settings = require('./src/api/config/settings.js').config
 const port = 8080 //开发服务器端口
 const outDir = 'static/dist/shop/'

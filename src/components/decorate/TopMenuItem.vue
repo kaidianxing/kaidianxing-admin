@@ -27,7 +27,9 @@
                     <SelectLink :value='{
                         url: item.linkurl,
                         name: item.linkurl_name,
-                        wxappid: item.wxappid
+                        wxappid: item.wxappid,
+                        video_id: item.video_id,
+                        keyLink: item.keyLink,
                     }' :tab-name="tabName" @change='changeLink'></SelectLink>
                 </div>
             </div>
@@ -82,7 +84,7 @@
         },
         data() {
             return {
-                tabName: 'store,goods,liver,coupon,customLink,goodsClassify,wxapplink'
+                tabName: 'store,goods,liver,coupon,customLink,goodsClassify,wxapplink,videoLive,videoRam'
             }
         },
         created(){

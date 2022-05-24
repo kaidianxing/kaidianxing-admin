@@ -2180,4 +2180,31 @@ export const customer = {
         img: '', // 纯图显示
     },
 };
+export const wxTransaction = {
+    id: "wxTransaction",
+    type: 'wxTransaction',
+    name: '视频号直播',
+    max: 1,
+    params: {
+        video_number_id: '', // 视频号ID
+        bgstyle: 'color',
+        bgimg: '',
+    },
+    style: {
+        bgcolor: '#FFFFFF',
+        background: '#FF3C29',
+        titlecolor: '#4D4D4D',
+        advancecolor: '#4D4D4D',
+        statuscolor: '#FFFFFF',
+        statusBgcolor: '#FF3C29',
+        btncolor: '#FFFFFF',
+        btnBgcolor: '#FF3C29',
+        margintop: '16',
+        marginleft: '24',
+        marginbottom: '0',
+        topradius:'12',
+        bottomradius: '12',
+    },
+    data: []
+};
 

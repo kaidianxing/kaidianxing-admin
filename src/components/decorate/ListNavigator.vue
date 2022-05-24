@@ -38,7 +38,9 @@
                 <SelectLink :value='{
                     name: value.linkurl_name,
                     url: value.linkurl,
-                    wxappid: value.wxappid
+                    wxappid: value.wxappid,
+                    video_id: value.video_id,
+                    keyLink: value.keyLink
                 }'
                 :tab-name="newTabName"
                  @change='changeLink'></SelectLink>
@@ -103,7 +105,9 @@
                     'cacheIcon': '', //不显示暂存的icon
                     'subTitle': '',
                     'linkurl': '',
-                    'linkurl_name': ''
+                    'linkurl_name': '',
+                    'video_id': '',
+                    'keyLink':''
                 })
             },
             textLength: {
@@ -119,7 +123,7 @@
             },
             tabName: {
                 type: String,
-                default: 'store,goods,liver,coupon,customLink,goodsClassify,wxapplink'
+                default: 'store,goods,liver,coupon,customLink,goodsClassify,wxapplink,videoLive,videoRam'
             },
             iconLabel: {
                 type: String,

@@ -68,6 +68,8 @@ const MAP_LIST = {//旧版本映射
     goodsClassify: 'LinkGoodsClassifyLink',
     wxapplink: 'LinkWxAppLink',
     merchants: 'LinkMerchants',
+    videoLive: 'LinkVideoLiveLink',
+    videoRam: 'LinkVideoRamLink',
 }
 
 export default {
@@ -93,7 +95,7 @@ export default {
         // 默认tab显示的tab列
         tabName: {
             type: String,
-            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug'
+            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
         },
         disabledLink: {
             type: Array,
@@ -145,6 +147,8 @@ export default {
             immediate: true,
             handler(tabNameList) {
                 if (tabNameList) {
+                    console.log(tabNameList,'tabNameList')
+                    console.log(mennuList,'mennuList')
                     let copyObj = JSON.parse(JSON.stringify(mennuList))
                     let list = tabNameList.split(',')
                     if (list.length > 0 && list[0].indexOf('Link') == -1) {

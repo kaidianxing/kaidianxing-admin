@@ -42,6 +42,8 @@ const menuList = [
         menuItem: [
             {name: '应用插件页面', type: 'LinkApplicationPlug'},
             {name: '直播间选择器', type: 'LinkLiverLink'},
+            {name: '视频号直播间', type: 'LinkVideoLiveLink'},
+            {name: '视频号动态', type: 'LinkVideoRamLink'},
         ]
     }, {
         title: '其他',

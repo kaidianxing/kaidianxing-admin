@@ -131,7 +131,7 @@
             }
         },
         watch: {
-            getWatchParams: { 
+            getWatchParams: {
                 handler(){
                    this.getImgHeight()
                 },
@@ -184,6 +184,8 @@
                     linkurl: '',
                     linkurl_name: '',
                     wxappid: '',
+                    video_id: '',
+                    keyLink:''
                 })
             },
             getParams(data) {
@@ -193,7 +195,9 @@
                     'subTitle': data.text,
                     'linkurl': data.linkurl,
                     'linkurl_name': data.linkurl_name,
-                    'wxappid': data.wxappid
+                    'wxappid': data.wxappid,
+                    'video_id': data.video_id,
+                    'keyLink': data.keyLink,
                 }
             },
             changeImg(item, val) {
@@ -203,7 +207,9 @@
             changeLink(item, val) {
                 item.wxappid = val.wxappid
                 item.linkurl = val.url;
-                item.linkurl_name = val.name
+                item.linkurl_name = val.name;
+                item.video_id = val.video_id;
+                item.keyLink = val.keyLink;
             },
             getInput(item, type, val) {
                 if (type == 'left') {

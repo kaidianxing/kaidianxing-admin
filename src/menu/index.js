@@ -15,7 +15,7 @@
  * zIndex只在同父级的兄弟间进行比较
  */
 import { menuTraverser } from '../assets/jsTools/traverser.js'
-let paths = require.context('./', false, /^((?!Plugin).)*\.js$/);//获取当前全部js文件
+let paths = require.context('./', false, /^((?!Plugin).)*\.js$/);//获取当前非plugin 结尾 js文件
 let menus = {};//各个模块的路由配置集合
 let pageIndex = 0
 paths.keys().forEach(item => {

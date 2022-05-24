@@ -54,7 +54,9 @@
                                 :item="{
                                     link: currentModal.data[activeIndex].linkurl,
                                     link_name: currentModal.data[activeIndex].linkurl_name,
-                                    url: currentModal.data[activeIndex].imgurl
+                                    url: currentModal.data[activeIndex].imgurl,
+                                    video_id: currentModal.data[activeIndex].video_id,
+                                    keyLink: currentModal.data[activeIndex].keyLink,
                             }"
                                 @change-img="changeImg"
                                 @change-link="changeLink"
@@ -92,7 +94,9 @@
                                 link: currentModal.data[activeIndex].linkurl,
                                 link_name: currentModal.data[activeIndex].linkurl_name,
                                 url: currentModal.data[activeIndex].imgurl,
-                                wxappid: currentModal.data[activeIndex].wxappid
+                                wxappid: currentModal.data[activeIndex].wxappid,
+                                video_id: currentModal.data[activeIndex].video_id,
+                                keyLink: currentModal.data[activeIndex].keyLink,
                             }"
                             @change-img="changeImg"
                             @change-link="changeLink"
@@ -281,7 +285,9 @@ export default {
             this.currentModal.data.forEach(v => {
                 v.linkurl = ''
                 v.linkurl_name = '',
-                v.wxappid = ''
+                v.wxappid = '',
+                v.video_id = '',
+                v.keyLink = ''
             })
         },
         changeImg(e) {
@@ -295,6 +301,8 @@ export default {
             this.currentModal.data[this.activeIndex].wxappid = e.wxappid
             this.currentModal.data[this.activeIndex].linkurl_name = e.name
             this.currentModal.data[this.activeIndex].linkurl = e.url
+            this.currentModal.data[this.activeIndex].video_id = e.video_id
+            this.currentModal.data[this.activeIndex].keyLink = e.keyLink
         },
         getImgInfo({ naturalHeight, naturalWidth }) {
             /*

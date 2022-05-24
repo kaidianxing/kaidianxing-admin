@@ -11,14 +11,14 @@
 <template>
     <div class='menu' v-if='currentModal.id=="menu2"&&lazyLoad'>
         <i-form :label-width="100" ref='menu2' :model="currentModal" :rules="validator">
-            
+
             <MyCollapse no-border>
                 <p class="form-title" slot='label'>
                     内容
                 </p>
                 <form-item :label-width="0">
                     <MyDragSortableItems :list='currentModal.data' @end='dragEnd' @delItem='delItem'>
-                        <template v-slot='{item}'> 
+                        <template v-slot='{item}'>
                             <MyTopMenuItem nodel label1='按钮文字：' label2='跳转链接：' placeholder="请输入按钮文字" :item='item' @on-change='getInput(item,$event)'  @change-link='changeLink(item,$event)'>
                                 <template #prepend>
                                     <div style='display:flex;margin-bottom:10px;'>
@@ -74,7 +74,7 @@
                     ></MyDraggableProgress>
                 </form-item>
             </MyCollapse>
-           
+
         </i-form>
     </div>
 </template>
@@ -90,17 +90,17 @@
                 btnStyle: [{
                     label: '直角',
                     icon: 'ivu-icon ivu-icon-ios-contract',
-                   
+
                     disabled: false
                 }, {
                     label: '圆角',
                     icon: 'ivu-icon ivu-icon-ios-contract',
-                   
+
                     disabled: false
                 }, {
                     label: '圆形',
                     icon: 'ivu-icon ivu-icon-ios-contract',
-                   
+
                     disabled: false
                 }],
                 colCount: [{
@@ -137,7 +137,9 @@
                     iconcolor: '#666666',
                     linkurl: '',
                     linkurl_name: '',
-                    wxappid: ''
+                    wxappid: '',
+                    video_id: '',
+                    keyLink:''
                 });
             },
             dragEnd(list) {
@@ -149,7 +151,9 @@
             changeLink(item, val) {
                 item.linkurl = val.url;
                 item.linkurl_name = val.name;
-                item.wxappid = val.wxappid
+                item.wxappid = val.wxappid;
+                item.video_id = val.video_id;
+                item.keyLink = val.keyLink;
             },
             getInput(item, val) {
                 item.text = val;

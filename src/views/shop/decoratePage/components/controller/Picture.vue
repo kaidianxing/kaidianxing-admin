@@ -11,7 +11,7 @@
 <template>
     <div class='picture' v-if='currentModal.id=="picture"&&lazyLoad'>
         <i-form :label-width="100" ref='picture' :model="currentModal" :rules="validator">
-           
+
             <MyCollapse>
                 <p class="form-title" slot='label'>
                     内容
@@ -19,7 +19,7 @@
                 <form-item :label-width="0">
                     <MyDragSortableItems :list='currentModal.data' @end='dragEnd' @delItem='delItem'>
                         <template v-slot='{item}'>
-                            <MyAddImg tip="建议图片宽度750px" draggable :item='item' link='linkurl' url='imgurl' @change-link='changeLink(item,$event)' @change-img='changeImg(item,$event)' @getImgInfo='getImgInfo(item,$event)'></MyAddImg>
+                            <MyAddImg tip="建议图片宽度750px" draggable :item='item' link='linkurl' url='imgurl' video_id="video_id" keyLink="keyLink" @change-link='changeLink(item,$event)' @change-img='changeImg(item,$event)' @getImgInfo='getImgInfo(item,$event)'></MyAddImg>
                         </template>
                     </MyDragSortableItems>
                     <i-button style='width:100%;' :style="{color:$css['--theme-color']}" @click='addItem'>+添加图片</i-button>
@@ -88,7 +88,9 @@
                     imgurl: '',
                     linkurl: '',
                     linkurl_name: '',
-                    wxappid: ''
+                    wxappid: '',
+                    video_id: '',
+                    keyLink:''
                 })
                 this.$nextTick(() => {
                     this.$parent.$el.lastChild.scrollTop = this.$parent.$el.lastChild.scrollHeight
@@ -101,6 +103,8 @@
                 item.linkurl = val.url;
                 item.linkurl_name = val.name
                 item.wxappid = val.wxappid
+                item.video_id = val.video_id;
+                item.keyLink = val.keyLink;
                 // this.refreshCurrentModal();
             },
             changeImg(item, val) {

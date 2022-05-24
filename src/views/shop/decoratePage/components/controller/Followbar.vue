@@ -87,7 +87,9 @@
                                     <MySelectLink :value='{
                                         url:currentModal.params.linkurl,
                                         name: currentModal.params.linkurl_name,
-                                        wxappid: currentModal.params.wxappid
+                                        wxappid: currentModal.params.wxappid,
+                                        video_id: currentModal.params.video_id,
+                                        keyLink: currentModal.params.keyLink
                                     }' @change='changeLink' style='flex:1;margin-right:10px;'></MySelectLink>
                                 </div>
                             </div>
@@ -131,25 +133,25 @@
                 iconstyle: [{
                     label: '圆角',
                     icon: 'iconfont icon-zujian-huiyuanxinxi-yuanjiao',
-                   
-                    
+
+
                     id: 'radius'
                 }, {
                     label: '圆形',
                     icon: 'iconfont icon-zujian-huiyuanxinxi-yuanxing',
-                   
-                    
+
+
                     id: 'circle'
                 }],
                 icontype: [
                 //     {
                 //     label: '分享人头像',
                 //     id: '1'
-                // }, 
+                // },
                 {
                     label: '商城logo',
                     id: '2'
-                }, 
+                },
                 {
                     label: '自定义',
                     id: '3'
@@ -169,7 +171,9 @@
             changeLink(val) {
                 this.currentModal.params.linkurl = val.url;
                 this.currentModal.params.linkurl_name = val.name;
-                this.currentModal.params.wxappid = val.wxappid
+                this.currentModal.params.wxappid = val.wxappid;
+                this.currentModal.params.video_id = val.video_id;
+                this.currentModal.params.keyLink = val.keyLink;
             },
             changeQr(val){
                  this.currentModal.params.qrcodeurl = val;
