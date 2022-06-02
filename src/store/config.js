@@ -57,7 +57,8 @@ export default {
         copyright: '',
         // 应用过期信息
         apps: {},
-        amap_key: '',
+        amap_key: '', //高德key
+        amap_code: '', //高德安全密钥
         // 店铺存储信息  默认托管存储
         shopStorage: {
             storage_model: 10
@@ -143,8 +144,9 @@ export default {
 
         },
         // 获取高德地图key
-        setAMapKey(state, amap_key) {
+        setAMapKey(state, {amap_key, amap_code}) {
             state.amap_key = amap_key
+            state.amap_code = amap_code
         },
         setShopStorage(state, res) {
             let { storage } = res;
@@ -276,7 +278,7 @@ export default {
                         })
                 })
             }
-           
+
             cacheReqPerm.then(res=> dispatch('setShopInit',{response:res,toPath:to}))
 
             return cacheReqPerm

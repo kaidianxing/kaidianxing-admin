@@ -46,6 +46,12 @@
                         </sms-template>
                     </div>
                 </TabPane>
+                <TabPane label="微信公众号订阅通知" name="subscribe" v-if="items.includes('subscribe')">
+                    <div style="padding-left: 40px;">
+                        <subscribe-template v-model="subscribeData" :type_code="type_code" :isShow_level="isShow_level"
+                                            :sendTime="sendTime"></subscribe-template>
+                    </div>
+                </TabPane>
             </Tabs>
         </div>
         <template #btn>
@@ -61,11 +67,12 @@ import wechatTemplate from "./template/wechatTemplate";
 import wxappTemplate from "./template/wxappTemplate";
 import smsTemplate from "./template/smsTemplate";
 import templateCode from "./noticeConfig";
+import subscribeTemplate from "./template/subscribeTemplate";
 
 export default {
     name: "index",
     components: {
-        wechatTemplate, wxappTemplate, smsTemplate
+        wechatTemplate, wxappTemplate, smsTemplate, subscribeTemplate
     },
     props: {
         is_showNoticeMember: {
@@ -97,6 +104,10 @@ export default {
                 template_id: '',
                 commission_level: '1',
                 member_id: []
+            },
+            subscribeData: {
+                status: 0,
+                is_default: 1,
             }
         }
     },
@@ -164,6 +175,17 @@ export default {
                         }
                     }
                 })
+            } else if (this.tabPoint == 'subscribe') {
+                this.$api.noticeApi.getSubscribeNotice({type_code: this.type_code}).then(res => {
+                    this.loading = false;
+                    if (res.error == 0) {
+                        delete res.error;
+                        this.subscribeData = {
+                            ...res,
+                            is_default: 1
+                        }
+                    }
+                })
             }
         },
         changeTab(name) {
@@ -178,6 +200,8 @@ export default {
                 this.wxappSave()
             } else if (this.tabPoint == 'sms') {
                 this.smsSave()
+            } else if (this.tabPoint == 'subscribe') {
+                this.subscribeSave()
             }
         },
         wechatSave() {
@@ -235,6 +259,19 @@ export default {
                 return
             }
             this.$api.noticeApi.addSmsNotice(obj).then(res => {
+                if (res.error == 0) {
+                    this.$Message.success('保存成功')
+                    this.getData()
+                }
+                this.submitLoading = false;
+            })
+        },
+        subscribeSave() {
+            let obj = {
+                type_code: this.type_code,
+                ...this.subscribeData
+            }
+            this.$api.noticeApi.addSubscribeNotice(obj).then(res => {
                 if (res.error == 0) {
                     this.$Message.success('保存成功')
                     this.getData()

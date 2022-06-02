@@ -179,5 +179,14 @@ export const noticeApi = {
         method: 'post',
         api: 'manage/notice/mailer/test-send'
     },
-
+    /*  -------------------------- 公众号订阅消息  ----------------------------------     */
+    getSubscribeNotice: {
+        method: 'get',
+        api: 'manage/notice/index/get-subscribe-notice',
+    },
+    // 保存
+    addSubscribeNotice: {
+        method: 'post',
+        api: 'manage/notice/index/subscribe-notice',
+    }
 };

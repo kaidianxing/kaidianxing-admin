@@ -65,6 +65,35 @@
                 <div class="template-link">拒收通知</div>
             </div>
         </div>
+        <!-- 微信公众号订阅-subscribe -->
+        <div class="default-template-content wxapp" v-if="type_template=='subscribe' && templateCode[type_code] && templateCode[type_code].subscribe">
+            <img class='bg-img' src="@/assets/image/notice/wxapp_bg.png" alt="">
+            <div class="line"></div>
+            <div class="wxapp-notice">
+                <div class="title flex">
+                    <div class="logo flex">
+                        <div class="logo-icon">商城</div>
+                        <div v-if="type_code == 'credit_sign_notice'">商城名称</div>
+                        <div v-else>商城</div>
+                    </div>
+                    <div class="dot">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="template-title">{{templateCode[type_code].subscribe.title}}</div>
+                    <div class="template-html" :class="type_code == 'credit_sign_notice' ? 'template-html-creditSign': ''">
+                        <div class="flex" v-for="(item, index) in templateCode[type_code].subscribe.info" :key="index">
+                            <div class="label">{{item.key}}</div>
+                            <div>{{item.title}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-link">查看详情 <i style="float: right" class="iconfont icon-line-right"></i></div>
+            </div>
+        </div>
     </div>
 </template>
 

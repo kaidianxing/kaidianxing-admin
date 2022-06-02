@@ -42,6 +42,11 @@
                                 <i class="iconfont"
                                    :class="item.item.wxapp.status == 1?'icon-chenggong-shixin success-color':'icon-del danger-color'"></i>
                             </div>
+                            <div class="flex list-card-child" v-if="item.item.subscribe">
+                                <div>微信公众号订阅通知</div>
+                                <i class="iconfont"
+                                   :class="item.item.subscribe.status == 1?'icon-chenggong-shixin success-color':'icon-del danger-color'"></i>
+                            </div>
                         </div>
                     </Card>
                 </div>
@@ -131,7 +136,7 @@
             }
             .notice-list {
                 width: 324px;
-                height: 200px;
+                height: 220px;
                 border: 1px solid $border-color;
                 color: $text-first;
                 border-radius: 6px;

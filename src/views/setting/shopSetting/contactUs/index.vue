@@ -46,7 +46,18 @@
                         </div>
                     </kdx-hint-text>
                 </FormItem>
-
+                <FormItem
+                    label="高德Web端(JS API)安全密钥："
+                    prop="amap_code"
+                >
+                    <Input
+                        v-model="model.amap_code"
+                        class="width-430"
+                        placeholder="请输入"
+                        :disabled="noManagePerm"
+                        @on-blur="configBlur"
+                    />
+                </FormItem>
                 <FormItem label="高德Web服务接口Key：" prop="web_key" v-error-item.web_key >
                     <Input
                             v-model="model.web_key"
@@ -178,6 +189,7 @@ export default {
             model: {
                 // amap_key: '2eb151002cc53dfbd3c4c7a6a0a7fd99',
                 amap_key: '',
+                amap_code: '',
                 web_key: '',
                 contact: '',
                 tel1: '',
@@ -270,14 +282,26 @@ export default {
                     } else {
                         this.model.selectedAddress = []
                     }
+                    this.configBlur()
                 }
             })
         },
         // 搜索地图
         searchMap() {
-            this.location = `${this.model.selectedAddress.join('')}${
-                this.model.detail
-            }`
+            setTimeout(()=> {
+                this.location = `${this.model.selectedAddress.join('')}${
+                    this.model.detail
+                }`
+                if(this.location) {
+                    this.$nextTick(()=> {
+                        this.$refs.amap.geocoder('getLocation')
+                    })
+                }
+            },800)
+        },
+        // key或者安全密钥失焦
+        configBlur() {
+            this.$refs.amap.changeKey(this.model.amap_key.trim(), this.model.amap_code.trim())
         },
         // 获取地址信息
         getAddress(data) {
@@ -349,7 +373,7 @@ export default {
                     break;
                 }
             }
-            
+
             let addressInfo = {
                 province: pItem?.label,
                 province_code: pItem?.id,
@@ -365,6 +389,7 @@ export default {
             }
             let {
                 amap_key,
+                amap_code,
                 web_key,
                 contact,
                 tel1,
@@ -380,8 +405,9 @@ export default {
                 lat,
             } = this.model
             let _param = {
-                amap_key,
-                web_key,
+                amap_key: amap_key.trim(),
+                amap_code,
+                web_key: web_key.trim(),
                 contact,
                 tel1,
                 tel2,
