@@ -36,6 +36,23 @@ export default {
         sms: {
             title: '\'<短信签名>\'恭喜您成为\'<店铺名称>\'的分销商'
         },
+        subscribe: {
+            title: '用户角色申请通知',
+            info: [
+                {
+                    key: '申请人',
+                    title: '张一一',
+                },
+                {
+                    key: '申请时间',
+                    title: '2021-12-30 12:30:50',
+                },
+                {
+                    key: '审核状态',
+                    title: '审核通过'
+                },
+            ],
+        }
     },
     // 新增下级通知
     commission_buyer_agent_add_child: {
@@ -63,6 +80,23 @@ export default {
         sms: {
             title: '\'<短信签名>\'恭喜您于\'<时间>\'新增一名下级分销员\'<会员>\''
         },
+        subscribe: {
+            title: '业务受理进度通知',
+            info: [
+                {
+                    key: '处理结果',
+                    title: '推荐成功'
+                },
+                {
+                    key: '操作时间',
+                    title: '2021-12-30 12:30:50'
+                },
+                {
+                    key: '温馨提示',
+                    title: '恭喜您，成功发展一名下级'
+                },
+            ],
+        }
     },
     // 下级付款通知
     commission_buyer_child_pay: {
@@ -102,6 +136,23 @@ export default {
         sms: {
             title: '\'<短信签名>\'恭喜您，您的\'<下级层级>\'下线\'<会员>\'在\'<下单时间>\'完成一笔订单支付'
         },
+        subscribe: {
+            title: '佣金待入账通知',
+            info: [
+                {
+                    key: '订单编号',
+                    title: '1021211229101415505101',
+                },
+                {
+                    key: '实付金额',
+                    title: '100.00',
+                },
+                {
+                    key: '待入账金额',
+                    title: '5.00'
+                },
+            ],
+        }
     },
     // 提现申请失败通知
     commission_buyer_withdraw_apply_fail: {
@@ -137,6 +188,23 @@ export default {
         sms: {
             title: '\'<短信签名>\'很抱歉，您的佣金提现申请未被同意，请联系商家并修改申请'
         },
+        subscribe: {
+            title: '业务受理进度通知',
+            info: [
+                {
+                    key: '提现金额',
+                    title: '10',
+                },
+                {
+                    key: '处理结果',
+                    title: '审核拒绝',
+                },
+                {
+                    key: '温馨提示',
+                    title: '您的佣金提现申请未通过，如有疑问请与客服联系'
+                },
+            ],
+        }
     },
     // 佣金打款通知
     commission_buyer_commission_pay: {
@@ -172,6 +240,31 @@ export default {
         sms: {
             title: '\'<短信签名>\'恭喜您，您申请的佣金提现已经打款，请注意查收，提现金额：\'<提现金额>\''
         },
+        subscribe: {
+            title: '业务受理进度通知',
+            info: [
+                {
+                    key: '业务类型',
+                    title: '申请提现',
+                },
+                {
+                    key: '业务内容',
+                    title: '提现金额：100.00',
+                },
+                {
+                    key: '处理结果',
+                    title: '审核通过'
+                },
+                {
+                    key: '操作时间',
+                    title: '2021-12-30 12:30:50'
+                },
+                {
+                    key: '温馨提示',
+                    title: '您的佣金已成功打款，请注意查收'
+                },
+            ],
+        }
     },
     // 分销商升级通知
     commission_buyer_commission_upgrade: {
@@ -203,6 +296,27 @@ export default {
         sms: {
             title: '\'<短信签名>\'恭喜您，您已成功升级为\'<分销等级>\'，将享受更多权益'
         },
+        subscribe: {
+            title: '等级变动提醒',
+            info: [
+                {
+                    key: '温馨提示',
+                    title: '恭喜您升级成功，您将拥有更多分销权益',
+                },
+                {
+                    key: '原始等级',
+                    title: '一级',
+                },
+                {
+                    key: '当前等级',
+                    title: '二级'
+                },
+                {
+                    key: '变动时间',
+                    title: '2021-12-30 12:30:50'
+                },
+            ],
+        }
     },
     // 新增下线用户通知
     commission_buyer_agent_add_child_line: {
@@ -230,6 +344,23 @@ export default {
         sms: {
             title: '\'<短信签名>\'恭喜您于\'<时间>\'新增一名下线用户\'<用户名称>\''
         },
+        subscribe: {
+            title: '业务受理进度通知',
+            info: [
+                {
+                    key: '处理结果',
+                    title: '推荐成功'
+                },
+                {
+                    key: '操作时间',
+                    title: '2021-12-30 12:30:50'
+                },
+                {
+                    key: '温馨提示',
+                    title: '恭喜您，成功发展一名下级用户'
+                },
+            ],
+        }
     },
 
 

@@ -37,7 +37,6 @@
                 <RadioGroup v-model="model.commission_level">
                     <Radio label="1">一级</Radio>
                     <Radio label="2">一级+二级</Radio>
-                    <Radio label="3">一级+二级+三级</Radio>
                 </RadioGroup>
                 <kdx-hint-text v-if="type_code === 'commission_buyer_child_pay'">开启内购后，一级佣金获得者是自身时，自身不发送此消息，只给二、三级佣金获得者发送消息提示</kdx-hint-text>
             </FormItem>
