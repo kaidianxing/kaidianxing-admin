@@ -13,7 +13,11 @@
         <div class="content" ref="content_bar" v-error-box='"kdxContentBar"' v-loading="loading">
             <slot></slot>
             <div class="copyright">
-                <p>Copyright 2020-2022 青岛开店星信息技术有限公司版权所有<br/> <br/>网站备案号/许可证号：鲁ICP备2021028233号-1</p>
+                <p><a href="https://www.kaidianxing.com" target="_blank">青岛开店星信息技术有限公司提供技术支持</a></p>
+                <p v-if="baseSetting.icp_code"><a href="https://beian.miit.gov.cn"
+                                                  target="_blank">
+                    <br/>
+                    网站备案号:{{ baseSetting.icp_code || '' }}</a></p>
             </div>
         </div>
         <div class="footer-btn" v-if="$slots.btn">
@@ -38,6 +42,9 @@ export default {
     computed: {
         ...mapState('menu', {
             openSubmenu: state => state.openSubmenu
+        }),
+        ...mapState('config', {
+            baseSetting: state => state.baseSetting
         }),
     },
     methods: {

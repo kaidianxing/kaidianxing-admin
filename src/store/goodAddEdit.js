@@ -293,6 +293,12 @@ export default {
                 if (val.goods?.dispatch_express === '1') {
                     val.goods.logistics_support.push('1')
                 }
+                if (val.goods?.dispatch_intracity === '1') {
+                    val.goods.logistics_support.push('2')
+                }
+                if (val.goods?.dispatch_verify === '1') {
+                    val.goods.logistics_support.push('3')
+                }
             }
             let auto_putaway = val.goods?.ext_field?.auto_putaway
             if (val.goods.status == '0' && auto_putaway === '1') {
@@ -571,10 +577,16 @@ export default {
                                     } else {
                                         ctx.commit('setIsThumbAddSlide', false)
                                     }
-                                    // 物流支持（控制必填标识显示） 1:普通快递 
+                                    // 物流支持（控制必填标识显示） 1:普通快递  2:同城配送
                                     data.logistics_support = []
+                                    // 商品表单处理
+                                    data.form_id = data?.form_id && data.form_id != 0 ? data.form_id : '';
                                     setModelData = initMultiOptions(data)
                                     ctx.commit('setModel', setModelData)
+                                    ctx.dispatch('goodAddEdit/distribution/setModel',
+                                            data.commission,
+                                            {root: true}
+                                    )
                                     // 商品权限
                                     if (perm_data) {
                                         ctx.dispatch(

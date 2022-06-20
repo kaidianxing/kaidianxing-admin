@@ -35,7 +35,7 @@
                                 @click="changePrice">
                             订单改价
                         </Button>
-                        <Button class="default-primary" v-if="goods_type != '2' && data.order_type != '40'" :disabled='!permMap.edit_address' @click="editReceiveInfo">
+                        <Button class="default-primary" v-if="data.dispatch_type !== '20' && goods_type != '2' && goods_type != '5' && goods_type != '6' && data.order_type != '40'" :disabled='!permMap.edit_address' @click="editReceiveInfo">
                             修改收货信息
                         </Button>
                         <Button class="default-primary" :disabled='!permMap.close' @click="closeOrder">
@@ -112,11 +112,11 @@
                     <div class="footer-btn" >
                         <div style="display: inline-block" >
                             <Button class="default-primary" :disabled='!permMap.cancel_send' @click="cancelSendGoods"
-                                    v-if="goods_type === '0' && data.scene != '20'">
+                                    v-if="(goods_type === '0'||goods_type === '7') && data.scene != '20'">
                                 取消发货
                             </Button>
                             <Button class="default-primary" :disabled='!permMap.edit_address' @click="editReceiveInfo"
-                                    v-if="goods_type === '0' && data.order_type != '40'">
+                                    v-if="(goods_type === '0'||goods_type === '7') && data.order_type != '40'">
                                 修改收货信息
                             </Button>
                             <!-- 实体商品货到付款待收货或者虚拟商品的待收货状态 -->
@@ -165,7 +165,10 @@
                 <Form :label-width="100">
                     <FormItem label="配送方式：">
                         <div class="dispatch-type flex">
-                            <template v-if="goods_type === '0' || (goods_type == '1' && data.dispatch_type =='20')">
+                            <template v-if="data.dispatch_type =='50'">
+                                <span class="text">-</span>
+                            </template>
+                            <template v-else-if="(goods_type === '0'||goods_type === '7') || (goods_type == '1' && data.dispatch_type =='20') || (goods_type == '5' && data.dispatch_type =='20')">
                                 <img class="dispatch_img" :src="getDeliveryImg" />
                                 <span class="text">{{getDispatch}}</span>
                             </template>
@@ -179,6 +182,10 @@
                             </template>
                             <template v-else>-</template>
                         </div>
+                    </FormItem>
+                    <!-- 配送、自提时间 -->
+                    <FormItem :label="`${getDeliverName}：`" v-if="getDeliverName && getDeliverTime">
+                        {{ getDeliverTime }}
                     </FormItem>
                     <!-- 虚拟商品不显示 -->
                     <FormItem label="收货人姓名：" v-if="goods_type === '0'">
@@ -308,6 +315,11 @@
                         <span class="flex" v-if="data.activity_type == 2">
                             <span v-if="is_Seckill" class="iconfont icon-dingdanliebiao-miaosha seckill-icon"></span>
                             秒杀订单
+                        </span>
+                        <!-- 拼团 -->
+                        <span class="flex" v-else-if="data.activity_type == 3">
+                            <span class="iconfont icon-yingyong-pintuan"></span>
+                            拼团订单
                         </span>
                         <span v-else>普通订单</span>
                     </FormItem>
@@ -600,13 +612,16 @@
             getDispatch(){
                 const dispatchOpt = {
                     '10': '快递',
+                    '30': '同城配送'
                 }
                 return dispatchOpt[this.data.dispatch_type] || '快递'
             },
             getDeliveryImg() {
                 let imgSrcObj = {
                     '10': 'order/delivery_map.png',
-                    '0': 'order/delivery_auto.png'
+                    '0': 'order/delivery_auto.png',
+                    '30': 'order/delivery_samecity.png',
+
                 }
 
                 let src = imgSrcObj[this.data.dispatch_type] || 'order/delivery_map.png'

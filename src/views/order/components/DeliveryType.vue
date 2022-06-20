@@ -16,6 +16,9 @@
                     <div class="name" v-if="type === 'ordinaryExpress'">
                         普通快递
                     </div>
+                    <div class="name" v-if="type === 'samecityDelivery'">
+                        同城配送
+                    </div>
                      <div class="right" style="margin-left: 16px">
                         <i-switch
                             v-model="modelValue"
@@ -35,8 +38,11 @@
                         【运费计算规则】
                     </span>
                 </div>
+                <div class="tips" v-if="type === 'samecityDelivery'">
+                    启用同城配送后，在配送范围内的买家可以选择同城配送，商家可以接入第三方配送，也可以自己配送。
+                </div>
             </div>
-           
+
         </div>
         <kdx-modal-frame
             :title="modalTitle"
@@ -173,6 +179,8 @@ export default {
         }
         if (this.type === 'ordinaryExpress') {
             this.modelValue = deliveryType?.express || 0
+        } else if (this.type === 'samecityDelivery') {
+            this.modelValue = deliveryType?.intracity || 0
         }
     },
     methods: {
@@ -196,6 +204,19 @@ export default {
                     }
                 }
                 this.enableExpress()
+            }else if (this.type === 'samecityDelivery') {
+                if (value === 0) {
+                    if (this.deliveryType.express === 0) {
+                        this.modalTitle = '系统提示'
+                        this.modalType = 'tips'
+                        this.showModalFlag = true
+                        this.$nextTick(() => {
+                            this.modelValue = 1
+                        })
+                        return
+                    }
+                }
+                this.$emit('change', value)
             }
         },
         // 普通快递开启关闭
@@ -203,6 +224,18 @@ export default {
             this.$api.orderApi
                 .enableExpress({
                     enable: this.modelValue,
+                })
+                .then((res) => {
+                    if (res.error === 0) {
+                        this.$Message.success('修改成功')
+                    }
+                })
+        },
+        // 同城配送开启关闭
+        enableIntracity(value) {
+            this.$api.orderApi
+                .enableIntracity({
+                    enable: value,
                 })
                 .then((res) => {
                     if (res.error === 0) {
@@ -320,7 +353,7 @@ export default {
         text-align: center;
         font-weight: bold;
     }
-   
+
 }
 .left-box {
     height: 22px;

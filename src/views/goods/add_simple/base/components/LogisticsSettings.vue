@@ -75,6 +75,24 @@
                         </span>
                     </Checkbox>
                 </div>
+                <div class="logistics-box">
+                    <Checkbox
+                        label="2"
+                        :disabled="dispatchEnable.intracity === 0"
+                    >
+                        同城配送
+                        <span v-if="dispatchEnable.intracity === 0">
+                            (当前不可用，请到
+                            <span
+                                style="color: #2D8CF0;cursor: pointer;"
+                                @click="fnJumpSamecityDelivery"
+                            >
+                                【配送方式】
+                            </span>
+                            管理中开启)
+                        </span>
+                    </Checkbox>
+                </div>
             </CheckboxGroup>
         </FormItem>
 
@@ -173,7 +191,7 @@ export default {
     },
     watch: {},
     methods: {
-        // 物流支持是否选中 0 普通快递 
+        // 物流支持是否选中 0 普通快递
         expressSelected(code) {
             return new Set(this.$store.state.goodAddEdit.model.logistics_support).has(code)
         },
@@ -187,13 +205,22 @@ export default {
         fnJumpOrdinaryExpress() {
             this.$utils.openNewWindowPage('/order/ordinary-express');
         },
+        // 跳转同城配送
+        fnJumpSamecityDelivery() {
+            if(this.$ismultiMerchant) {
+                this.$utils.openNewWindowPage('/order/delivery-setting');
+            }else {
+                this.$utils.openNewWindowPage('/order/same-city-delivery');
+            }
+        },
         choosePlace() {
             this.$refs.selector.setValue()
         },
         // 包邮和统一运费需要默认传个0
         changeDispatchCount(e) {
             this.model_dispatch_id = e == '1' ? '' : '0'
-        }
+        },
+
 
     },
 }

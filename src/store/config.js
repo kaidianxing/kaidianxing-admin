@@ -101,6 +101,7 @@ export default {
         setBaseSetting(state, option) {
             state.baseSetting.logo = option.logo;
             state.baseSetting.name = option.name;
+            state.baseSetting.icp_code = option.icp_code;
             // document.title = option.name
             // 网页图标替换
             document.querySelector('link[rel="icon"]').href = $utils.media(option.logo);
@@ -136,7 +137,7 @@ export default {
         setShopInit(state, res) {
             state.user = res?.user;
             state.right_top_link = res?.right_top_link;
-            state.copyright = "<p>Copyright 2020-2022 青岛开店星信息技术有限公司版权所有<br/> <br/>网站备案号/许可证号：鲁ICP备2021028233号-1</p>"
+            state.copyright = "<p>青岛开店星信息技术有限公司提供技术支持<br/> <br/>网站备案号:鲁ICP备2021028233号-1</p>"
             state.admin_status = res?.admin_status
             state.shop_expire_day = res?.shop_expire_day
             state.is_trial = res?.is_trial
@@ -264,7 +265,7 @@ export default {
         },
         // 商城初始化数据、权限、用户、修改密码等链接
         getShopInit({
-            dispatch
+            dispatch,
         }, { to, forceUpdate }) {
             if (!cacheReqPerm||!forceUpdate) { // 没有缓存或者强制刷新
                 cacheReqPerm = new Promise((resolve, reject) => {

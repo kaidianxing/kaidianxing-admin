@@ -69,6 +69,7 @@
                         <Button
                             type="text"
                             @click="editExpress(list)"
+                            v-if="list.dispatch_type !== '30'"
                         >修改物流
                         </Button>
                     </template>
@@ -94,7 +95,7 @@
                         <Button
                             type="text"
                             @click="editExpress(list)"
-                            v-if="goods.type === '0'"
+                            v-if="goods.type === '0' && list.dispatch_type !== '30'"
                         >修改物流
                         </Button>
                         <!-- 实体商品货到付款、虚拟商品待收货且不能是维权订单 -->
@@ -109,7 +110,7 @@
                     <Button
                         type="text"
                         @click="packageExpress(list)"
-                        v-if="goods.type === '0'"
+                        v-if="goods.type === '0' && list.dispatch_type !== '30'"
                     >物流信息
                     </Button>
                 </template>

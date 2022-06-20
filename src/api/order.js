@@ -286,7 +286,7 @@ export const orderApi = {
     getDispatchEnable: {
         method: 'get',
         api: 'manage/sysset/express/dispatch-enable'
-    },    
+    },
     // 普通快递开启关闭
     enableExpress: {
         method: 'post',
@@ -311,5 +311,30 @@ export const orderApi = {
     getDeliveryList: {
         method: 'get',
         api: 'manage/order/list/dispatch-type'
-    }
+    },
+    // 获取达达城市列表
+    getDadaCity: {
+        method: 'post',
+        api: 'manage/order/intracity/get-dada-city'
+    },
+    // 同城配送开启关闭
+    enableIntracity: {
+        method: 'post',
+        api: 'manage/order/intracity/enable'
+    },
+    // 获取同城配送设置
+    getIntracitySetting: {
+        method: 'get',
+        api: 'manage/order/intracity/get'
+    },
+    // 获取店铺所在地行政区域
+    getConfigDistance: {
+        method: 'get',
+        api: 'manage/order/intracity/config-distance'
+    },
+    // 保存同城配送设置
+    setIntracitySetting: {
+        method: 'post',
+        api: 'manage/order/intracity/set'
+    },
 };

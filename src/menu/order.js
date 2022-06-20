@@ -199,17 +199,21 @@ export default {
                             path: '/order/ordinary-express/edit'
                         }
                     }
-                }
+                },
+                samecityDelivery: {
+                    title: '同城配送',
+                    path: '/order/same-city-delivery',
+                    perm:'',
+                },
             }
         },
-        settingBusiness: {
-            title: '交易设置',
-            name: '交易设置',
-            path:'/order/business/setting',
-            redirect:'/setting/business/index',
-            icon: "icon-kaidianxing-jiaoyishezhi-1",
-            perm:'sysset.trade.view',
-            show: true
-        }
+        // settingBusiness: {
+        //     title: '交易设置',
+        //     name: '交易设置',
+        //     path:'/order/business/setting',
+        //     redirect:'/setting/business/index',
+        //     icon: "icon-kaidianxing-jiaoyishezhi-1",
+        //     perm:'sysset.trade.view',
+        // }
     }
 };

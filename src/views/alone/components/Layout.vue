@@ -12,7 +12,11 @@
         <div class="layout-content" :style="{'background-image':`url('${getLoginBg}')`}">
             <router-view></router-view>
             <div class="copyright">
-                <kdx-hint-text v-html="copyright_info"></kdx-hint-text>
+                <p><a href="https://www.kaidianxing.com" target="_blank">青岛开店星信息技术有限公司提供技术支持</a></p>
+                <p v-if="setting.icp_code"><a href="https://beian.miit.gov.cn"
+                                                  target="_blank">
+                    <br/>
+                    网站备案号:{{ setting.icp_code || '' }}</a></p>
             </div>
         </div>
 
@@ -26,7 +30,6 @@ export default {
     data() {
         return {
             setting: {},
-            copyright_info: '<p>Copyright 2020-2022 青岛开店星信息技术有限公司版权所有 <br /><br />网站备案号/许可证号：鲁ICP备2021028233号-1</p>'
         }
     },
     created() {
@@ -36,8 +39,10 @@ export default {
         getLogo() {
             return this.setting?.logo
         },
+        ...mapState('config', {
+            baseSetting: state => state.baseSetting
+        }),
         ...mapState('alone', {
-            setting: state => state.setting || {},
             qrcode_url: state => state.qrcode_url
         }),
         getLoginBg() {
@@ -165,6 +170,9 @@ export default {
         padding-bottom: 20px;
         margin: 20px auto 0;
         text-align: center;
+        /deep/ a {
+            color: $text-zhushi;
+        }
     }
 }
 </style>>

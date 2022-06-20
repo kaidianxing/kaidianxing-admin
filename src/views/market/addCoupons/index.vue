@@ -196,7 +196,7 @@ export default {
                 if (valid) {
                     let model = this.$store.state.couponAdd.model;
                     // 分销开启
-                    if (model.limit_member === '1') {
+                    if (model.limit_member === '1' && model.pick_type !== '2') {
                         if (parseInt(this.$store.state?.config?.commission?.setting?.commission_level || '-1') > 0) {
                             if (!model?.member_level?.length && !model?.commission_level?.length) {
                                 this.$Message.error('领取人和分销商等级必选一个');

@@ -106,6 +106,13 @@
                             ></kdx-hint-tooltip>
                         </div>
                     </FormItem>
+                    <FormItem label="网站备案号：">
+                        <Input :disabled='noManagePerm'
+                               placeholder="请输入网站备案号"
+                               class="agree-input"
+                               v-model="model.icp_code"
+                        />
+                    </FormItem>
                 </div>
                 <div class="content-box">
                     <kdx-form-title>协议信息</kdx-form-title>

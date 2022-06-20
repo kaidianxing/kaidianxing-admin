@@ -98,6 +98,13 @@ export default [{
                 import ('@/views/order/ordinaryExpress/add/index.vue')
         },
         {
+            name: '同城配送',
+            path: '/order/same-city-delivery',
+            perm: '',
+            component: () =>
+                    import ('@/views/order/samecityDelivery/index.vue')
+        },
+        {
             name: '改价记录',
             path: '/order/change-price-record',
             perm: 'order.op.view',

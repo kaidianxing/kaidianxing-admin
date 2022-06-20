@@ -309,10 +309,27 @@
                         params.goods.dispatch_id = '0' // 运费模板
                         params.goods.dispatch_price = '0' // 统一运费
                     }
+                    // 同城配送
+                    if (new Set(params.goods.logistics_support).has('2')) {
+                        params.goods.dispatch_intracity = '1'
+                    } else {
+                        params.goods.dispatch_intracity = '0'
+                    }
                     if (this.dispatchEnable.express === 0) {
                         // 商城普通快递关闭
-                        this.$Message.error('请选择配送方式')
-                        return false
+                        if (params.goods.dispatch_intracity === '0' && params.goods.dispatch_verify =='0') {
+                            // 没有选择同城配送
+                            this.$Message.error('请选择配送方式')
+                            return false
+                        }
+                    }
+                    if (this.dispatchEnable.intracity === 0) {
+                        // 商城同城配送关闭
+                        if (params.goods.dispatch_express === '0' && params.goods.dispatch_verify =='0') {
+                            // 没有选择普通快递
+                            this.$Message.error('请选择配送方式')
+                            return false
+                        }
                     }
                 } else if (params.goods.type === '1') {
                     // 虚拟商品
@@ -324,6 +341,7 @@
                     params.goods.ext_field.exchange = '0'
                     params.goods.ext_field.is_delivery_pay = '0'
                     params.goods.dispatch_express = '0' // 普通快递
+                    params.goods.dispatch_intracity = '0' // 同城配送
                 } else if(params.goods.type === '2') {
                     params.goods.ext_field.is_delivery_pay = '0' //货到付款
                     delete params.goods.weight
@@ -334,6 +352,7 @@
                     delete params.goods.ext_field.refund
                     delete params.goods.ext_field.exchange
                     delete params.goods.dispatch_express // 普通快递
+                    delete params.goods.dispatch_intracity // 同城配送
                     delete params.goods.reduction_type
                     delete params.goods.single_full_unit_switch
                     delete params.goods.single_full_unit

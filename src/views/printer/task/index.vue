@@ -37,7 +37,7 @@
                                     <span v-if="dispatchEnable.express === 0">
                             (当前不可用，请到
                             <span
-                                    style="color: $brand-color;cursor: pointer;"
+                                    style="color: #2D8CF0;cursor: pointer;"
                                     @click="fnJumpOrdinaryExpress"
                             >
                                 【配送方式】
