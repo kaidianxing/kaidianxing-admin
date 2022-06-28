@@ -74,7 +74,7 @@
                     pagesize: this.page.pageSize,
                     page: this.page.pageNumber
                 }, this.sort, this.table.date);
-                this.$api.homeApi.getGoodsRank(params)
+                this.$api.homeApi.getStatisticsGoodsRank(params)
                     .then(res => {
                         this.table.loading = false;
                         if (res.error === 0) {
