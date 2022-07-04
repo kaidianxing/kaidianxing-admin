@@ -13,61 +13,43 @@
  *
  * @param key
  */
-export function MapLoader(key) {
+/**
+ * 异步创建script标签
+ *
+ * @param key
+ * @param code 表示高德新申请的key的安全密钥
+ */
+export function MapLoader(key, code) {
     return new Promise((resolve, reject) => {
-        if (window.AMap) {
-            resolve(window.AMap)
-        } else {
+
+        window._AMapSecurityConfig = {
+            securityJsCode: null
+        }
+
+        // 改变key或者code 会直接初始化
+        if(window.AMap?.User.key !== key || window?._AMapSecurityConfig.securityJsCode !== code) {
+            if(code) {
+                window._AMapSecurityConfig = {
+                    securityJsCode: code,
+                }
+            }
             var script = document.createElement('script')
             script.type = 'text/javascript'
+            script.id = 'amapKey'
             script.async = true
             script.src = 'https://webapi.amap.com/maps?v=1.4.15&callback=initAMap&key=' + key
             script.onerror = reject
+            var amapJs = document.getElementById('amapKey');
+            if(amapJs) {
+                amapJs.parentNode.removeChild(amapJs);
+            }
             document.head.appendChild(script)
-        }
-        window.initAMap = () => {
+            window.initAMap = () => {
+                resolve(window.AMap)
+            }
+        } else if(window.AMap) {
             resolve(window.AMap)
         }
     })
 
-    // const mp = new Promise((resolve, reject) => {
-    //     let hasLoaded1 = document.getElementById('amap')
-    //     if (hasLoaded1) {
-    //         // 只加载一次
-    //         return
-    //     }
-    //     let script = document.createElement('script')
-    //     script.type = 'text/javascript'
-    //     script.src =
-    //         'https://webapi.amap.com/maps?v=1.4.15&callback=initAMap&key=' + key
-    //     script.id = 'amap'
-    //     script.onerror = reject
-    //     document.head.appendChild(script)
-    //     window.initAMap = function() {
-    //         resolve(window.AMap)
-    //     }
-    // })
-    // const mpUI = new Promise((resolve, reject) => {
-    //     let hasLoaded2 = document.getElementById('amapUI')
-    //     if (hasLoaded2) {
-    //         // 只加载一次
-    //         return
-    //     }
-    //     let script2 = document.createElement('script')
-    //     script2.type = 'text/javascript'
-    //     script2.src = '//webapi.amap.com/ui/1.1/main-async.js'
-    //     script2.id = 'amapUI'
-    //     script2.onerror = reject
-    //     script2.onload = function() {
-    //         resolve('success')
-    //     }
-    //     document.head.appendChild(script2)
-    // })
-    // return Promise.all([mp, mpUI])
-    //     .then((result) => {
-    //         return result[0]
-    //     })
-    //     .catch((e) => {
-    //         console.log(e)
-    //     })
 }

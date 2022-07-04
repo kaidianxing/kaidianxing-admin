@@ -1,13 +1,13 @@
 /**
- * 开店星新零售管理系统
- * @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
- * @author 青岛开店星信息技术有限公司
- * @link https://www.kaidianxing.com
- * @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
- * @copyright 版权归青岛开店星信息技术有限公司所有
- * @warning Unauthorized deletion of copyright information is prohibited.
- * @warning 未经许可禁止私自删除版权信息
- */
+* 开店星新零售管理系统
+* @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
+* @author 青岛开店星信息技术有限公司
+* @link https://www.kaidianxing.com
+* @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
+* @copyright 版权归青岛开店星信息技术有限公司所有
+* @warning Unauthorized deletion of copyright information is prohibited.
+* @warning 未经许可禁止私自删除版权信息
+*/
 <template>
     <div class="amap">
         <div id="container" class="amap-box"></div>
@@ -20,7 +20,7 @@ var AMap = null
 var map = null
 var marker = null
 export default {
-    props: ['value', 'aMapKey', 'division_way', 'location', 'addMapClickEvent', 'formItemTip'],
+    props: ['value', 'aMapKey', 'aMapCode', 'division_way', 'location', 'addMapClickEvent', 'formItemTip'],
     data() {
         return {
             circleList: [],
@@ -28,46 +28,38 @@ export default {
         }
     },
     watch: {
-        aMapKey: {
-            handler(value) {
-                if (value) {
-                    this.$nextTick(() => {
-                        map && map.destroy()
-                        this.initMap(value).then(() => {
-                            console.log(
-                                'this.division_way-----------',
-                                this.division_way
-                            )
-                            if (this.division_way === 0) {
-                                this.$emit('addCircle')
-                            } else if (this.division_way === 1) {
-                                this.$emit('addPolygon')
-                            }
-                        })
-                    })
-                } else {
-                    map && map.destroy()
-                }
-            },
-            immediate: true,
-        },
-        location: {
-            handler(value) {
-                if (value) {
-                    this.geocoder('getLocation')
-                }
-            },
-            immediate: true,
-        },
+        // aMapKey: {
+        //     handler(value) {
+        //         if (value) {
+        //             this.$nextTick(() => {
+        //                 map && map.destroy()
+        //                 this.initMap(value).then(() => {
+        //                     console.log(
+        //                         'this.division_way-----------',
+        //                         this.division_way
+        //                     )
+        //                     if (this.division_way === 0) {
+        //                         this.$emit('addCircle')
+        //                     } else if (this.division_way === 1) {
+        //                         this.$emit('addPolygon')
+        //                     }
+        //                 })
+        //             })
+        //         } else {
+        //             map && map.destroy()
+        //         }
+        //     },
+        //     immediate: true,
+        // },
     },
     beforeDestroy() {
         map && map.destroy()
     },
     methods: {
         // 初始化地图
-        initMap(value) {
+        initMap(value,code) {
             return new Promise((resolve, reject) => {
-                MapLoader(value).then(
+                MapLoader(value, code).then(
                     (aMap) => {
                         console.log('地图加载成功')
                         AMap = aMap
@@ -117,7 +109,7 @@ export default {
                     'AMap.PlaceSearch'
                 ],
                 () => {
-                    
+
                     // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
                     map.addControl(new AMap.ToolBar())
                     // 在图面添加比例尺控件，展示地图在当前层级和纬度下的比例尺
@@ -130,7 +122,7 @@ export default {
                     // map.addControl(new AMap.Geolocation())
                     map.addControl(new AMap.PlaceSearch())
                     map.addControl(new AMap.Autocomplete())
-                     //实例化Autocomplete
+                    //实例化Autocomplete
                     var autoOptions = {
                         //city 限定城市，默认全国
                         city: '全国'
@@ -145,6 +137,7 @@ export default {
         },
         // 正向地理编码(地址转化为经纬度)/逆向地理编码(经纬度转化为地址)
         geocoder(type, lnglat) {
+            console.log('this.location-----------', this.location)
             AMap.plugin('AMap.Geocoder', () => {
                 let geocoder = new AMap.Geocoder({})
                 if (type === 'getLocation') {
@@ -172,6 +165,7 @@ export default {
                     })
                 } else if (type === 'getAddress') {
                     geocoder.getAddress(lnglat, (status, result) => {
+                        // console.log(status, result)
                         if (status === 'complete' && result.info === 'OK') {
                             // result为对应的地理位置详细信息
                             let selectedAddress = [
@@ -330,7 +324,7 @@ export default {
             let polyEditor
             map.plugin(['AMap.PolyEditor'], () => {
                 polyEditor = new AMap.PolyEditor(map, polygon)
-                
+
                 this.polygonList.push({
                     id: index,
                     polygon,
@@ -437,6 +431,26 @@ export default {
         // 设置中心点
         setCenter(lng, lat) {
             map.setCenter([lng, lat])
+        },
+        /*
+        * 修改调用方法
+        * key web端key
+        * code web端安全密钥
+        * */
+        changeKey(key, code) {
+            if(!key) {
+                map && map.destroy()
+            }
+            this.$nextTick(() => {
+                map && map.destroy()
+                this.initMap(key, code).then(() => {
+                    if (this.division_way === 0) {
+                        this.$emit('addCircle')
+                    } else if (this.division_way === 1) {
+                        this.$emit('addPolygon')
+                    }
+                })
+            })
         },
     },
 }
