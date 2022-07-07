@@ -2207,4 +2207,65 @@ export const wxTransaction = {
     },
     data: []
 };
+export const groups = {
+    id: "groups",
+    type: 'groups',
+    name: "拼团",
+    params: {
+        activityGoodsType: '1', // 活动商品来源 0 商户 1 平台
+        listtype: 'scroll',
+        addGoodsType: '0',
+        bgstyle: 'color', // 背景
+        bgimg: '',
+        showacttitle: '1',
+        titlebg: 'color',
+        titlebgimg: '',
+        titletype: 'texticon', // 标题类型
+        titleimg: '',
+        titlename: '多人拼团',
+        titleicon: 'iconfont-def icon-def-pintuan2-1',
+        titleweight: 'bold',
+        showsales: '0', // 销量
+        showprice: '1', // 商品原价
+        pricetext: '单买价',
+        showbtn: '1',
+        btnstyle: '0',
+        btntext: '马上拼',
+        showbadge: '0',
+        badgetext: '多人拼团',
+        badgeicon: 'iconfont-def icon-def-pintuan2-1',
+        activityData: {},
+        goodsnum: 20,
+        pricegrouptext: '拼团价',
+        activitygoodscount: 1, // 活动商品数量
+    },
+    style: {
+        bgcolor: '#ffffff',
+        titlecolor: '#212121',
+        titlebgcolor: '#ffffff',
+        titleiconcolor: '#ff6f29',
+        textcolor: '#212121',
+        titlesize: 32,
+        numcolor: '#ffffff',
+        countbgcolor: '#ff6f29',
+        morecolor: '#969696',
+        goodsbgcolor: '#ffffff',
+        goodscolor: '#212121',
+        subtitlecolor: '#969696',
+        pricecolor: '#969696', // 商品原价
+        btncolor: '#ff6f29',
+        btntextcolor: '#ffffff',
+        badgetextcolor: '#ffffff',
+        badgeiconcolor: '#ffffff',
+        badgebgcolor: '#ff6f29',
+        marginleft: 24,
+        margintop: 16,
+        marginbottom: 0,
+        topradius: 12,
+        bottomradius: 12,
+        pricegroupcolor: '#ff3c29',
+    },
+    data: [],
+}
+
 

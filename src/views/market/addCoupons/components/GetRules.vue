@@ -19,11 +19,9 @@
                 <Radio label="1" :disabled="isDisabled">
                     <span>直接链接领取</span>
                 </Radio>
-                <!-- TODO -->
                 <Radio label="2" :disabled="isDisabled">
                     <span>活动领取</span>
                 </Radio>
-                <!-- TODO -->
                 <kdx-hint-tooltip type="form">
                     <Form :label-width="85">
                         <FormItem label="领券中心：">

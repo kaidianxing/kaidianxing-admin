@@ -49,6 +49,12 @@
                         <span class="iconfont icon-dingdanliebiao-miaosha seckill"></span>
                     </Tooltip>
                 </div>
+                <!-- 拼团 -->
+                <div v-if="item.activity_type == 3" class="activity-icon">
+                    <Tooltip content="拼团订单" placement="top">
+                        <span class="iconfont icon-yingyong-pintuan groups"></span>
+                    </Tooltip>
+                </div>
                 <span class="text">下单时间：{{ item.created_at }}</span>
                 <span class="text1">订单编号：{{ item.order_no }}</span>
                 <kdx-copy-text :text="item.order_no">

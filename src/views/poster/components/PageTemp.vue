@@ -16,28 +16,14 @@
             'background-image': `url(${$utils.media(info.thumb)})`
         }">
             <div class="temp-action flex">
-                <!-- TODO -->
-                <!-- <div class="temp-action-btn default">
-                    <kdx-hint-tooltip trigger="click" type="qrCode" text="复制商品 链接" url="222222222222">
-                        <span>预览模板</span>
-                    </kdx-hint-tooltip>
-                </div> -->
+
                 <div class="temp-action-btn primary" :class="{'temp-action-btn-disabled': noManagePerm}" @click="useTemp">使用模板</div>
-                <!-- TODO -->
-                <!-- <div class="temp-action-btn primary">购买模板</div> -->
 
                 <div class="temp-action-btn danger" :class="{'temp-action-btn-disabled': noManagePerm}" v-if="delabled" @click="delTemp">删除模板</div>
             </div>
-            <!-- TODO -->
-            <!-- <div class="temp-tag">已购买</div> -->
 
         </div>
         <div class="temp-detail">
-            <!-- TODO -->
-            <!-- <div class="temp-price">
-                ￥
-                <span class="price-num">30.00</span>元起
-            </div>-->
 
             <div class="price-tag custom" v-if="info.type =='0'">自定义</div>
             <div class="price-tag free" v-else>免费使用</div>

@@ -270,7 +270,7 @@ export default {
                             )
                         } else {
                             const status = params.row.status
-
+                            const isGroup = this.data.groups_rebate_activity_data?.success==='0'
                             return (
                                 <div>
                                     <span
@@ -282,7 +282,7 @@ export default {
                                                     : 'none'
                                         }}
                                     >
-                                        待发货
+                                         {isGroup?'待成团':'待发货'}
                                     </span>
                                     <span
                                         style={{
@@ -503,6 +503,12 @@ export default {
                     price: '-' + this.formatPrice(this.data?.extra_price_package?.seckill),
                     show: this.data.extra_price_package && this.data.extra_price_package?.seckill,
                     color: true
+                },
+                {
+                    title: '拼团优惠：',
+                    price: '-'+this.formatPrice(this.data?.extra_price_package?.groups),
+                    show: this.data.extra_price_package && this.data.extra_price_package?.groups,
+                    color: false
                 },
             ];
 

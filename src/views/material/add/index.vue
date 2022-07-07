@@ -259,7 +259,7 @@ export default {
 .activity-add-wrap {
     .right {
         flex: 1;
-        height: calc(100vh - 56px);
+        height: calc(100vh - 110px);
         overflow-y: auto;
         padding-top: 20px;
         .content-bar-right {

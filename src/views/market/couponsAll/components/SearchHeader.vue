@@ -129,7 +129,7 @@ export default {
                     },
                     {
                         id: 4,
-                        name: '活动领取', // TODO
+                        name: '活动领取',
                     }
                 ],
             },

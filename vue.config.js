@@ -7,6 +7,7 @@
  * @copyright 版权归青岛开店星信息技术有限公司所有
  * @warning Unauthorized deletion of copyright information is prohibited.
  * @warning 未经许可禁止私自删除版权信息
+ *
  */
 
 const path = require('path')

@@ -25,6 +25,8 @@
             <div class="goods-preview-content" ref='scrollBox'>
                 <template v-if="type == 'activity' &&value">
                     <seckill-table v-if="activeType=='seckill'"  :list="activity.list" :loading="activity.loading" @on-search="handleSearch" @on-change="chooseActivity"></seckill-table>
+                    <groups-table v-if="activeType=='groups'"   :list="activity.list" :loading="activity.loading" @on-search="handleSearch" @on-change="chooseActivity"></groups-table>
+
                 </template>
                 <template v-if="type == 'goods' && value">
                     <goods-table :goods-params="goodsParams" @on-change="goodsChange" :list="selectGoods" multiple ref="goods"></goods-table>
@@ -53,10 +55,12 @@
 <script>
 import SeckillTable from './SeckillTable.vue';
 import GoodsTable from './GoodsTable.vue';
+import GroupsTable from "./GroupsTable";
 
 // 活动列表map
 const apiMap = {
-    'seckill': 'getSeckillActivities',
+    'seckill':['seckillApi','getSeckillActivities'] ,
+    'groups':['groupsApi', 'getGroupActivities'],
 }
 export default {
     props: {
@@ -85,13 +89,14 @@ export default {
             type: String,
             required: true,
             validator: (t)=> {
-                return ['seckill'].indexOf(t)>-1
+                return ['seckill','groups'].indexOf(t)>-1
             }
         }
     },
     components: {
         SeckillTable,
         GoodsTable,
+        GroupsTable
     },
     data() {
         return {
@@ -106,7 +111,7 @@ export default {
             },
             goodsParams: {
                 activity_type: this.activeType,
-                
+
             },
             page: {
                 pageNumber: 1,
@@ -130,7 +135,7 @@ export default {
         }
     },
     methods: {
-       
+
         init(){
             this.type = this.activeType;
            this.chooseActive =this.activeData;
@@ -150,7 +155,10 @@ export default {
                 },
                 this.search
             );
-            this.$api.seckillApi[apiMap[this.activeType]](params).then(res => {
+            let module = apiMap[this.activeType][0]
+            let name = apiMap[this.activeType][1]
+            this.$api[module][name](params).then(res => {
+            // this.$api.seckillApi[apiMap[this.activeType]](params).then(res => {
                 console.log('res', res)
                     this.activity.loading = false
                     if (res.error === 0) {
@@ -211,7 +219,7 @@ export default {
         handlePageChange(page) {
             this.page = page
             this.getActivies()
-            
+
             try {
                 this.$refs.scrollBox.scrollTop=0
             }catch (e) {

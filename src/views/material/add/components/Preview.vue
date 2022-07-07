@@ -40,7 +40,7 @@
 <style lang="scss" scoped>
     .preview-index {
         width: 380px;
-        height: calc(100vh - 56px - 20px);
+        height: calc(100vh - 130px);
         padding-bottom: 20px;
         box-sizing: border-box;
         overflow-y: scroll;

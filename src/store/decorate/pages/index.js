@@ -107,6 +107,11 @@ export default {
             svg: 'seckill'
         },
         {
+            type: 'groups',
+            name: '拼团',
+            svg: 'groups'
+        },
+        {
             type: 'wxTransaction',
             name: '视频号直播',
             icon: 'iconfont icon-zhibo-mian'

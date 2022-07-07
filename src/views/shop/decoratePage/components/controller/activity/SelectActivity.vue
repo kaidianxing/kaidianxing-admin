@@ -246,6 +246,12 @@ export default {
                     has_option: item.has_option,
                     type: item.type,
                     seckillData: item.seckillData||  item?.activitys?.seckill || null,
+                    groupsData: item?.activitys?.groups || null,
+                    groupsRebateData: item?.activitys?.groupsRebate || null,
+                    groupsFissionData: item?.activitys?.groupsFission || null
+                }
+                if (this.activeType === 'groups') {
+                    data.productprice = item.min_price;
                 }
                 this.currentModal.data.push(data);
             }

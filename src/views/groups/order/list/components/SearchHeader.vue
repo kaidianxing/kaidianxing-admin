@@ -1,0 +1,99 @@
+<template>
+    <kdx-header-bar>
+        <Form ref="form" :model="model" :label-width="100" inline @submit.native.prevent>
+            <FormItem label="活动名称：">
+                <i-input type="text" v-model="model.keyword" placeholder="活动名称" @on-enter="handleSearch" class="width-340"/>
+            </FormItem>
+            <FormItem label="拼团编号：">
+                <i-input type="text" v-model="model.team_no" placeholder="拼团编号" @on-enter="handleSearch" class="width-340"/>
+            </FormItem>
+            <FormItem label="拼团状态：">
+                <Select v-model="model.status" class="width-160">
+                    <Option v-for="item in statusList" :key="item.value" :value="item.value">
+                        {{ item.label }}
+                    </Option>
+                </Select>
+            </FormItem>
+            <FormItem label="开团时间：">
+                <DatePicker v-model="date" type="datetimerange" format="yyyy-MM-dd HH:mm" placeholder="开团时间" @on-change="changeDate" class="width-340"></DatePicker>
+            </FormItem>
+            <div class="ivu-form-item-btn">
+                <Button type="primary" @click="handleSearch">搜索</Button>
+                <Button type="text" @click="handleReset">重置</Button>
+            </div>
+        </Form>
+    </kdx-header-bar>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                model: {
+                    keyword: '',
+                    team_no: '',
+                    status: 'all',
+                    created_at: '',
+                    end_time: '',
+                },
+                date: [],
+                statusList: [
+                    {
+                        value: 'all',
+                        label: '全部',
+                    },
+                    {
+                        value: '0',
+                        label: '待成团',
+                    },
+                    {
+                        value: '1',
+                        label: '已成团',
+                    },
+                    {
+                        value: '2',
+                        label: '未成团',
+                    },
+                ],
+            }
+        },
+        methods: {
+            // 添加活动
+            addActivity() {
+                this.$router.push({
+                    path: '/groups/activity/index',
+                    query: {
+                        type: 'add',
+                    },
+                })
+            },
+            changeDate(date) {
+                this.model.created_at = date[0];
+                this.model.end_time = date[1]
+            },
+            // 搜索
+            handleSearch() {
+                let params = {
+                    ...this.model,
+                    status: this.model.status === 'all'?'':this.model.status,
+                };
+                this.$emit('on-search', params)
+            },
+            // 重置
+            handleReset() {
+                this.reset();
+                this.handleSearch()
+            },
+            reset() {
+                this.model = {
+                    keyword: '',
+                    status: 'all',
+                    created_at: '',
+                    end_time: '',
+                };
+                this.date = []
+            },
+        },
+    }
+</script>
+<style lang="scss" scoped></style>

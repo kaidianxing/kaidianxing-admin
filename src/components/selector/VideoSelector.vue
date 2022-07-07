@@ -302,7 +302,7 @@
                     type: '20',
                     created_at
                 });
-                
+
                 if(!this.weixinControl.actionApi){
                 this.$api.accessoryApi.getAccessoryList(params).then(res => {
                     this.loading = false;
@@ -343,10 +343,10 @@
                                 tmp.id = item.media_id;
                                 tmp.name = item.title;
                                 tmp.path = item.url;
-                                
+
                                 rs.push(tmp);
                             });
-                            
+
 
                             this.video.list = rs;
                             this.total = r.total;
@@ -380,7 +380,6 @@
                         params.append('file', file); // 通过append向form对象添加数据
 
                         if(this.weixinControl.actionApi){
-                            // todo video_title video_description 怎么来的
                             params.append("video_title", "todo");
                             params.append("video_description", "todo");
                             params.append('type', this.weixinControl.actionApi.getTypeNameByMsgType());

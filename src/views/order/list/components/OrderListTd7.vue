@@ -15,8 +15,10 @@
             <div class="order-status">
                 <!--0代付款 10待发货 11部分发货 20待收货 30已完成-->
                 <!--待成团-->
+                <span class="wait-send-goods" :class="{'wait-payment': list.activity_type==4}"
+                      v-if="isWaitGroups">待成团</span>
                 <!--待发货-->
-                <span class="wait-send-goods" v-if="list.status == '10'">待发货</span>
+                <span class="wait-send-goods" v-if="list.status == '10' && !isWaitGroups">待发货</span>
                 <!--部分发货-->
                 <span class="wait-send-goods" v-if="list.status === '11'">部分发货</span>
                 <!--待付款-->
@@ -31,7 +33,7 @@
             </div>
             <div class="btn">
                 <!--待发货-->
-                <template v-if="list.status == '10'">
+                <template v-if="list.status == '10' && !isWaitGroups">
                     <template>
                         <Button type="text" @click="sendGoods(list)">确认发货</Button>
 
@@ -83,7 +85,7 @@
                     </Button>
                     <Button type="text" @click="closeOrder(list)">关闭订单</Button>
                 </template>
-                <!--待收货-->
+                <!--待收货 -->
                 <template v-else-if="list.status === '20' && list.dispatch_type!='20'">
                     <template>
                         <Button
@@ -140,6 +142,12 @@ export default {
             remark: "",
             is_refund_front: '1'
         };
+    },
+    computed:{
+        // 是否是待成团订单
+        isWaitGroups() {
+            return this.list.status == 10 && (this.list?.groups_team_info?.success == 0 || this.list?.groups_rebate_team_info?.success == 0 || this.list?.groups_fission_team_info?.success == 0);
+        },
     },
     methods: {
         // 判断有没有整单维权完成
