@@ -372,7 +372,7 @@ export default {
         // 获取多规格数据
         getGoodsData(id) {
             this.loading = true;
-            this.$api.goodApi.getGoodInformation({id}).then(res => {
+            this.$api.goodsApi.getGoodInformation({id}).then(res => {
                 if (res.error === 0) {
                     this.specs = res.data.spec;
                     let list = res.data.options.map(item => {

@@ -365,7 +365,7 @@ export default {
             }
 
 
-            .seckill, .credit {
+            .seckill, .credit, .groups {
                 margin-right: 4px;
                 font-size: 24px;
             }
@@ -376,6 +376,9 @@ export default {
 
             .credit {
                 color: #6100FF;
+            }
+            .groups {
+                color: #F66000;
             }
         }
     }

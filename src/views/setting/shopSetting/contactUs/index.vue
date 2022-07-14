@@ -1,13 +1,13 @@
 /**
-* 开店星新零售管理系统
-* @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
-* @author 青岛开店星信息技术有限公司
-* @link https://www.kaidianxing.com
-* @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
-* @copyright 版权归青岛开店星信息技术有限公司所有
-* @warning Unauthorized deletion of copyright information is prohibited.
-* @warning 未经许可禁止私自删除版权信息
-*/
+ * 开店星新零售管理系统
+ * @description 基于Yii2+Vue2.0+uniapp研发，H5+小程序+公众号全渠道覆盖，功能完善开箱即用，框架成熟易扩展二开
+ * @author 青岛开店星信息技术有限公司
+ * @link https://www.kaidianxing.com
+ * @copyright Copyright (c) 2020-2022 Qingdao ShopStar Information Technology Co., Ltd.
+ * @copyright 版权归青岛开店星信息技术有限公司所有
+ * @warning Unauthorized deletion of copyright information is prohibited.
+ * @warning 未经许可禁止私自删除版权信息
+ */
 <template>
     <kdx-content-bar :loading="loading">
         <div class="contact-us">
@@ -60,11 +60,11 @@
                 </FormItem>
                 <FormItem label="高德Web服务接口Key：" prop="web_key" v-error-item.web_key >
                     <Input
-                        v-model="model.web_key"
-                        class="width-430"
-                        placeholder="请输入"
-                        show-word-limit
-                        :maxlength="50"
+                            v-model="model.web_key"
+                            class="width-430"
+                            placeholder="请输入"
+                            show-word-limit
+                            :maxlength="50"
                     />
                     <kdx-hint-text>
                         <div class="flex align-center">
@@ -77,12 +77,12 @@
                                 </Button>
                             </div>
                             <kdx-hint-tooltip
-                                type="image"
-                                :image="
+                                    type="image"
+                                    :image="
                                         require('@/assets/image/order/amap_web_service.png')
                                     "
-                                :maxWidth="730"
-                                width="690px"
+                                    :maxWidth="730"
+                                    width="690px"
                             ></kdx-hint-tooltip>
                         </div>
                     </kdx-hint-text>
@@ -158,7 +158,7 @@
                 class="primary-long"
                 :disabled="noManagePerm"
                 @click="handleSave"
-            >保存</Button
+                >保存</Button
             >
         </template>
         <modify-address-modal
@@ -328,24 +328,24 @@ export default {
         handleSave() {
             this.$refs['form'].validate((valid) => {
                 if (valid) {
-                    // 不是平台端  走之前的逻辑
-                    if (this.model.lng && this.model.lat) {
-                        // 校验地址是否发生变化
-                        if (
-                            (this.model.lng !== this.cacheModel?.address?.lng ) ||
-                            (this.model.lat !== this.cacheModel?.address?.lat)
-                        ) {
-                            // this.showModal = true
-                            this.handleOk()
-                            return
+                        // 不是平台端  走之前的逻辑
+                        if (this.model.lng && this.model.lat) {
+                            // 校验地址是否发生变化
+                            if (
+                                (this.model.lng !== this.cacheModel?.address?.lng ) ||
+                                (this.model.lat !== this.cacheModel?.address?.lat)
+                            ) {
+                                // this.showModal = true
+                                this.handleOk()
+                                return
+                            }
+                            let _param = this.formatParam()
+                            this.saveContact(_param)
+                        } else {
+                            this.$Message.error(
+                                '获取定位失败，请点击搜索地图重新定位'
+                            )
                         }
-                        let _param = this.formatParam()
-                        this.saveContact(_param)
-                    } else {
-                        this.$Message.error(
-                            '获取定位失败，请点击搜索地图重新定位'
-                        )
-                    }
                     // } else {
                     //     // 平台端
                     //     let _param = this.formatParam1()

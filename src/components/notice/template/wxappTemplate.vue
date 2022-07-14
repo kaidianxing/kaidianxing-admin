@@ -13,7 +13,7 @@
         <div class="tip">
             <kdx-hint-alert :show-icon="false">
                 <div>
-                    请到微信小程序管理后台服务类目中添加 【商家自营】-【服装/鞋/箱包】
+                    请到微信小程序管理后台服务类目中添加 【商家自营】-【服饰/内衣】
                 </div>
             </kdx-hint-alert>
         </div>

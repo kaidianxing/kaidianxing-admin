@@ -8,7 +8,7 @@
  * @warning Unauthorized deletion of copyright information is prohibited.
  * @warning 未经许可禁止私自删除版权信息
  */
-
+//
 var config = {//测试站
     "base_url": "https://free-shopstar.v5bsklk.getpkg.cn/api",
     "attachment_url": "https://free-shopstar.v5bsklk.getpkg.cn/data/attachment/",
@@ -16,6 +16,13 @@ var config = {//测试站
     "wap_dist_url": "https://free-shopstar.v5bsklk.getpkg.cn/static/dist/shop/kdx_wap/",
     "route": "history"
 }
+// var config = { //lkx
+//     "base_url": "http://likexin.shopstar.cn/api",
+//     "attachment_url": "http://likexin.shopstar.cn/data/attachment/",
+//     "public_url": "http://likexin.shopstar.cn/",
+//     "wap_dist_url": "http://likexin.shopstar.cn/static/dist/shop/kdx_wap/",
+//     "route": "history"
+// }
 // var config = {
 //     "base_url": "http://kdx-free-mbw.v5dev.getpkg.cn/api",
 //     "attachment_url": "http://kdx-free-mbw.v5dev.getpkg.cn/data/attachment/",
