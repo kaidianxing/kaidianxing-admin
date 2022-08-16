@@ -46,6 +46,7 @@
                         <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2" v-else-if="row.client_type === '30'"></kdx-svg-icon>
                         <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban" v-else-if="row.client_type === '32'"></kdx-svg-icon>
                         <kdx-svg-icon class="iconfont" type="icon-douyin" v-else-if="row.client_type === '31'"></kdx-svg-icon>
+                        <span style="color:#12aa9c;font-size:16px" class="iconfont icon-PCduan" v-else-if="row.client_type === '70'"></span>
                         <span class="text">{{ row.client_type_text }}</span>
                     </div>
                 </template>

@@ -38,6 +38,7 @@
                             <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2" v-else-if="list.create_from === '30'"></kdx-svg-icon>
                             <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban" v-else-if="list.create_from === '32'"></kdx-svg-icon>
                             <kdx-svg-icon class="iconfont" type="icon-douyin" v-else-if="list.create_from === '31'"></kdx-svg-icon>
+                            <span class="iconfont icon-PCduan" v-else-if="list.create_from === '70'"></span>
                             <span class="text">下单时间：{{list.created_at}}</span>
                             <span class="text">订单编号：{{list.order_no}}</span>
                             <kdx-copy-text :text="list.order_no">
@@ -507,6 +508,10 @@ export default {
 
                     .icon-H {
                         color: #ff6004;
+                    }
+                    .icon-PCduan{
+                        font-size: 16px;
+                        color:#11aa9c ;
                     }
                     .text {
                         padding-right: 20px;

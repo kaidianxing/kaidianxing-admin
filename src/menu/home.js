@@ -148,13 +148,208 @@ export default {
                 },
             },
         },
-
+        fans: {
+            title: "粉丝管理",
+            name: "粉丝管理",
+            path: "/home/wechat/fans/list",
+            show: ($route) => showWechatAchievePath.includes($route?.path),
+            zIndex: 0,
+            perm: 'channel.wechat.view',
+            children: {
+                fansList: {
+                    title: "粉丝列表",
+                    name: "粉丝列表",
+                    perm: 'channel.wechat.view',
+                    path: "/home/wechat/fans/list",
+                },
+                fansLabel: {
+                    title: "粉丝标签",
+                    name: "粉丝列表",
+                    perm: 'channel.wechat.view',
+                    path: "/home/wechat/fans/label",
+                },
+            },
+        },
+        reply: {
+            title: "自动回复",
+            name: "自动回复",
+            path: "/home/wechat/reply/follow/index",
+            show: ($route) => showWechatAchievePath.includes($route?.path),
+            zIndex: 1,
+            perm: 'channel.wechat.view',
+            children: {
+                followReply: {
+                    title: "关注回复",
+                    name: "关注回复",
+                    perm: 'channel.wechat.view',
+                    path: "/home/wechat/reply/follow/index",
+                },
+                keywordReply: {
+                    title: "关键词回复",
+                    name: "关键词回复",
+                    perm: 'channel.wechat.view',
+                    path: "/home/wechat/reply/keyword/index",
+                    children: {
+                        keywordAdd: {
+                            title: "添加关键词",
+                            name: "添加关键词",
+                            perm: 'channel.wechat.view',
+                            path: "/home/wechat/reply/keyword/set",
+                            show: false,
+                            showSubMenu: true,
+                            showBackBtn: false,
+                        },
+                    },
+                },
+            },
+        },
+        CustomMu: {
+            title: "自定义菜单",
+            name: "自定义菜单",
+            path: "/home/public/lib/menu",
+            zIndex: 2,
+            perm: 'channel.wechat.view',
+            show: ($route) => showWechatAchievePath.includes($route?.path),
+            children: {
+                publicNum: {
+                    title: "自定义菜单",
+                    name: "自定义菜单",
+                    path: "/home/public/lib",
+                    perm: 'channel.wechat.view',
+                    show: false,
+                    showSubMenu: true,
+                    showBackBtn: false,
+                },
+            },
+        },
+        MaterialLibrary: {
+            zIndex: 3,
+            title: "素材管理",
+            name: "素材管理",
+            perm: 'channel.wechat.view',
+            path: "",
+            show: ($route) => showWechatAchievePath.includes($route?.path),
+            children: {
+                Img: {
+                    title: "图片素材",
+                    name: "图片素材",
+                    path: "/home/lib/image",
+                    perm: 'channel.wechat.view',
+                    show: ($route) => showWechatAchievePath.includes($route?.path),
+                },
+                Video: {
+                    title: "视频素材",
+                    name: "视频素材",
+                    path: "/home/lib/video",
+                    perm: 'channel.wechat.view',
+                    show: ($route) => showWechatAchievePath.includes($route?.path),
+                },
+                ImgText: {
+                    title: "图文素材",
+                    name: "图文素材",
+                    path: "/home/lib/news",
+                    perm: 'channel.wechat.view',
+                    show: ($route) => showWechatAchievePath.includes($route?.path),
+                },
+            },
+        },
+        // ------------------ pc渠道---------------------
+        goodsGroup: {
+            title: "商品组管理",
+            name: "商品组管理",
+            path: "/home/pc/goods/list",
+            show: ($route) => showPcAchievePath.includes($route?.path),
+            zIndex: 0,
+            children: {
+                fansList: {
+                    title: "添加",
+                    name: "添加",
+                    path: "/home/pc/goods/add",
+                    // perm:'pc.goods-group.view',
+                    show: false,
+                    showSubMenu: true,
+                    showBackBtn: true,
+                },
+            }
+        },
+        menusSetting: {
+            title: "菜单管理",
+            name: "菜单管理",
+            path: "",
+            show: ($route) => showPcAchievePath.includes($route?.path),
+            zIndex: 0,
+            children: {
+                fansList: {
+                    title: "顶部菜单",
+                    name: "顶部菜单",
+                    path: "/home/pc/menus/header",
+                    // perm: "pc.menus.view",
+                },
+                fansLabel: {
+                    title: "底部菜单",
+                    name: "底部菜单",
+                    path: "/home/pc/menus/footer",
+                    // perm: "pc.menus.view",
+                },
+                add: {
+                    title: "添加菜单",
+                    name: "添加菜单",
+                    path: "/home/pc/menus/add",
+                    // perm: "pc.menus.view",
+                    show:false,
+                    showSubMenu:true,
+                    showBackBtn:true,
+                }
+            },
+        },
+        serviceSetting: {
+            title: "客服管理",
+            name: "客服管理",
+            path: "/home/pc/menus/serviceManaging",
+            // perm: "pc.sysset.customer-service.view",
+            show: ($route) => showPcAchievePath.includes($route?.path),
+            zIndex: 0
+        },
+        copyrightSetting: {
+            title: "版权设置",
+            name: "版权设置",
+            path: "/home/pc/copyright",
+            // perm: "pc.sysset.copyright.view",
+            show: ($route) => showPcAchievePath.includes($route?.path),
+            zIndex: 0
+        },
+        baseSetting: {
+            title: "基础设置",
+            name: "基础设置",
+            path: "/home/pc/baseSettings/settings",
+            show: ($route) => showPcAchievePath.includes($route?.path),
+            zIndex: 0,
+            children: {
+                fansList: {
+                    title: "基础设置",
+                    name: "基础设置",
+                    // perm: "pc.sysset.basic.view",
+                    path: "/home/pc/baseSettings/settings",
+                },
+                fansLabel: {
+                    title: "首页广告",
+                    name: "首页广告",
+                    path: "/home/pc/baseSettings/advertising",
+                    // perm:'pc.home-ads.view'
+                },
+            },
+        },
     }
 }
 
 // 公众号配置完成后展示的路由
 const showWechatAchievePath = [
     "/home/wechat/config/achieve",
+    "/home/wechat/reply/follow/index",
+    "/home/wechat/reply/keyword/index",
+    "/home/wechat/reply/keyword/set",
+    "/home/wechat/fans/list",
+    "/home/wechat/fans/label",
     "/home/public/lib",
     "/home/lib/image",
     "/home/lib/voice",
@@ -162,3 +357,14 @@ const showWechatAchievePath = [
     "/home/lib/news",
     "/home/public/lib/menu",
 ];
+const showPcAchievePath = [
+    "/home/pc/goods/list",
+    "/home/pc/goods/add",
+    '/home/pc/menus/header',
+    '/home/pc/menus/footer',
+    '/home/pc/menus/add',
+    '/home/pc/menus/serviceManaging',
+    '/home/pc/copyright',
+    '/home/pc/baseSettings/settings',
+    '/home/pc/baseSettings/advertising'
+]

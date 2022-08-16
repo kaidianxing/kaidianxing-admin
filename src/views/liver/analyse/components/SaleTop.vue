@@ -162,6 +162,10 @@
                                             class="iconfont icon-douyin"
                                             v-if="item.source === '4'"
                                         ></span>
+                                        <span
+                                            class="iconfont icon-PCduan"
+                                            v-if="item.source === '70'"
+                                        ></span>
                                     </div>
                                 </div>
                             </li>

@@ -58,24 +58,54 @@ export default [
                 path: '/home/manage',
             },
 
-            // {
-            //     name: '自定义菜单',
-            //     component: () => import('@/views/home/public/lib/index.vue'),
-            //     perm: "",
-            //     path: '/home/public/lib',
-            // },
-            // {
-            //     name: "自定义菜单",
-            //     component: () => import('@/views/home/public/lib/menu.vue'),
-            //     perm: "",
-            //     path: "/home/public/lib/menu",
-            // },
-            // {
-            //     name: "素材",
-            //     component: () => import('@/views/home/public/lib/source.vue'),
-            //     perm: "",
-            //     path: "/home/lib/:type",
-            // },
+            {
+                name: '自定义菜单',
+                component: () => import('@/views/home/public/lib/index.vue'),
+                perm: "channel.wechat.view",
+                path: '/home/public/lib',
+            },
+            {
+                name: "自定义菜单",
+                component: () => import('@/views/home/public/lib/menu.vue'),
+                perm: "channel.wechat.view",
+                path: "/home/public/lib/menu",
+            },
+            {
+                name: "素材",
+                component: () => import('@/views/home/public/lib/source.vue'),
+                perm: "channel.wechat.view",
+                path: "/home/lib/:type",
+            },
+            {
+                name: '关注回复',
+                component: () => import('@/views/home/wechat/reply/follow/index.vue'),
+                perm: 'channel.wechat.view',
+                path: '/home/wechat/reply/follow/index',
+            },
+            {
+                name: '关键词回复',
+                component: () => import('@/views/home/wechat/reply/keyword/index.vue'),
+                perm: 'channel.wechat.view',
+                path: '/home/wechat/reply/keyword/index',
+            },
+            {
+                name: '添加关键词',
+                component: () => import('@/views/home/wechat/reply/keyword/set.vue'),
+                perm: 'channel.wechat.view',
+                path: '/home/wechat/reply/keyword/set',
+            },
+            {
+                name: '粉丝列表',
+                component: () => import('@/views/home/wechat/fans/list/index.vue'),
+                perm: 'channel.wechat.view',
+                path: '/home/wechat/fans/list'
+            },
+            {
+                name: '粉丝标签',
+                component: () => import('@/views/home/wechat/fans/label/index.vue'),
+                perm: 'channel.wechat.view',
+                path: '/home/wechat/fans/label'
+            },
             {
                 name: '公众号配置',
                 component: () => import('@/views/home/wechat/config/index.vue'),
@@ -93,8 +123,72 @@ export default [
                 component: () => import('@/views/home/wechat/config/settings/index.vue'),
                 // perm: 'channel.registry.view',
                 path: '/home/wechat/config/settings',
+            },//商品组管理
+            {
+                name: '商品组管理',
+                component: () => import('@/views/home/pc/goodsGroup/list.vue'),
+                path: '/home/pc/goods/list',
+                // perm:'pc.goods-group.view',
+                meta: {
+                    timestamp: true
+                },
             },
-
+            {
+                name: '添加商品组',
+                component: () => import('@/views/home/pc/goodsGroup/addGoodsGroups.vue'),
+                path: '/home/pc/goods/add',
+                // perm:'pc.goods-group.view'
+            },
+            {
+                name: '顶部菜单',
+                component: () => import('@/views/home/pc/menus/headerMenu.vue'),
+                path: '/home/pc/menus/header',
+                // perm:'pc.menus.view',
+                meta: {
+                    timestamp: true
+                },
+            },
+            {
+                name: '底部菜单',
+                component: () => import('@/views/home/pc/menus/footerMenu.vue'),
+                path: '/home/pc/menus/footer',
+                // perm:'pc.menus.view',
+                meta: {
+                    timestamp: true
+                },
+            },
+            {
+                name: '添加菜单',
+                component: () => import('@/views/home/pc/menus/addMenus.vue'),
+                path: '/home/pc/menus/add',
+                // perm:'pc.menus.view',
+            },
+            {
+                name: '客服管理',
+                component: () => import('@/views/home/pc/serviceManaging/index.vue'),
+                path: '/home/pc/menus/serviceManaging',
+                // perm:'pc.sysset.customer-service.view'
+            }, {
+                name: '版权设置',
+                component: () => import('@/views/home/pc/copyright/copyright.vue'),
+                path: '/home/pc/copyright',
+                // perm:'pc.sysset.copyright.view'
+            },
+            {
+                name: '基础设置',
+                component: () => import('@/views/home/pc/baseSettings/settings.vue'),
+                path: '/home/pc/baseSettings/settings',
+                // perm:'pc.sysset.basic.view'
+            },
+            {
+                name: '首页广告',
+                component: () => import('@/views/home/pc/baseSettings/advertising.vue'),
+                path: '/home/pc/baseSettings/advertising',
+                // perm:'pc.home-ads.view',
+                meta: {
+                    timestamp: true
+                },
+            },
 
         ],
     },

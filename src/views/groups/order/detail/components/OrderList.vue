@@ -24,6 +24,7 @@
                                       v-else-if="row.create_from == '31'"></svg-icon>
                             <svg-icon class="iconfont icon" type="icon-qudao-App"
                                       v-else-if="row.create_from == '40'"></svg-icon>
+                            <span style="color:#12aa9c;font-size:16px" class="iconfont icon-PCduan" v-else-if="row.create_from === '70'"></span>
                         </div>
                         <div class="order-no line-hide" @click="handleOrderNo(row.order_no)">
                             {{ row.order_no }}

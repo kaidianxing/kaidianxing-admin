@@ -131,6 +131,12 @@ export default {
                                 <span class="iconfont icon-H icon"></span>
                             );
                         }
+                        else if (params.row.source == '70') {
+                            // pc
+                            component = (
+                                <span style="color:#12aa9c;font-size:14px" class="iconfont icon-PCduan icon"></span>
+                            );
+                        }
                         return (
                             <div class="vip-info">
                                 <div class="user-image">

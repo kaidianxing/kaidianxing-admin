@@ -36,7 +36,7 @@
                 this.getInfo();
             },
             getInfo() {
-                this.$api.homeApi.getVipInfo()
+                this.$api.memberApi.getVipInfo()
                     .then(res => {
                         if (res.error === 0) {
                             this.info.data = res;

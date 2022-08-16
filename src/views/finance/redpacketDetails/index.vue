@@ -116,6 +116,7 @@
                                 <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2" v-else-if="row.member_source === '30'"></kdx-svg-icon>
                                 <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban" v-else-if="row.member_source === '32'"></kdx-svg-icon>
                                 <kdx-svg-icon class="iconfont" type="icon-douyin" v-else-if="row.member_source === '31'"></kdx-svg-icon>
+                                <span style="color:#12aa9c;font-size:16px" class="iconfont icon-PCduan" v-else-if="row.member_source === '70'"></span>
                                 <!-- <span
                                     class="iconfont icon-zhifubaoxiaochengxu"
                                     v-if="row.source === '5'"

@@ -37,6 +37,7 @@
                             <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2" v-else-if="item.parent_source === '30'"></kdx-svg-icon>
                             <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban" v-else-if="item.parent_source === '32'"></kdx-svg-icon>
                             <kdx-svg-icon class="iconfont" type="icon-douyin" v-else-if="item.parent_source === '31'"></kdx-svg-icon>
+                            <span style="color:#12aa9c;font-size:16px" class="iconfont icon-PCduan" v-else-if="item.parent_source === '70'"></span>
                         </p>
                     </div>
                     <div class="line-hide">{{item.relation_reason}}</div>

@@ -110,7 +110,8 @@
                                                     params.row.source == 21 ? <span class="iconfont icon-weixinxiaochengxu"></span> :
                                                     params.row.source == 30 ? <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2"></kdx-svg-icon> :
                                                     params.row.source == 32 ? <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban"></kdx-svg-icon> :
-                                                    params.row.source == 31 ? <kdx-svg-icon class="iconfont" type="icon-douyin"></kdx-svg-icon> : ''
+                                                    params.row.source == 31 ? <kdx-svg-icon class="iconfont" type="icon-douyin"></kdx-svg-icon> :
+                                                    params.row.source == 70 ? <span class="iconfont icon-PCduan"></span> : ''
                                                 }
                                                 {
                                                     params.row.is_black == 1 ?
@@ -497,6 +498,11 @@
                                 color: #306cff;
                             }
 
+                            .icon-PCduan{
+                                font-size: 16px;
+                                color:#11aa9c ;
+
+                            }
                             .icon-H {
                                 color: #ff6004;
                             }

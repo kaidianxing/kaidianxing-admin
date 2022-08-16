@@ -46,6 +46,7 @@
                                     <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2" v-else-if="row.source === '30'"></kdx-svg-icon>
                                     <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban" v-else-if="row.source === '32'"></kdx-svg-icon>
                                     <kdx-svg-icon class="iconfont" type="icon-douyin" v-else-if="row.source === '31'"></kdx-svg-icon>
+                                    <span style="color:#12aa9c;font-size:16px" class="iconfont icon-PCduan" v-else-if="row.source === '70'"></span>
                                 </p>
                             </div>
                         </template>

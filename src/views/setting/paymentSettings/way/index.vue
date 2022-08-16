@@ -61,6 +61,19 @@
                         @on-refresh="handleRefresh"
                     />
                 </TabPane>
+                <TabPane  label="PC商城" name="tab5">
+                    <wechat-pay
+                        v-if="loaded"
+                        :setting="pc"
+                        :wechatTemp="wechatTemp"
+                        :alipayTemp="alipayTemp"
+                        :white_host="white_host"
+                        ref="tab5"
+                        @submit="pcSub"
+                        @on-refresh="handleRefresh"
+                        name="pc"
+                    ></wechat-pay>
+                </TabPane>
             </Tabs>
         </div>
         <template #btn>
@@ -82,6 +95,7 @@ export default {
         return {
             tabPoint: 'tab1',
             h5: {},
+            pc:{},
             wxapp: {},
             wechat: {},
             byte_dance: {},
@@ -104,7 +118,7 @@ export default {
         getSetting() {
             this.$api.settingApi.getPaymengtSetting().then((res) => {
                 if (res.error === 0) {
-                    let keys = ['wechat', 'wxapp', 'h5', 'byte_dance']
+                    let keys = ['wechat', 'wxapp', 'h5', 'byte_dance','pc']
                     keys.forEach((key) => {
                         this[key] = res[key]
                     })
@@ -122,6 +136,16 @@ export default {
                 wxapp: this.wxapp,
                 h5: this.h5,
                 byte_dance: this.byte_dance,
+            }
+            this.postData(data)
+        },
+        pcSub(info){
+            let data = {
+                wechat:this.wechat,
+                wxapp: this.wxapp,
+                h5: this.h5,
+                byte_dance: this.byte_dance,
+                pc:info
             }
             this.postData(data)
         },

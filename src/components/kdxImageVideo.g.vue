@@ -62,7 +62,7 @@
                     </div>
                 </li>
                 <!--添加图片-->
-                <li class="add" v-if="!current && !isReadonly" @click="addImage"
+                <li class="add" :class="{disabled: isReadonly}" v-if="!current" @click="addImage"
                     :style="{width: `${width}px`, height: `${height}px`}">
                     <div class="text-icon">
                         <span class="iconfont icon-tianjiatupian icon"></span>
@@ -74,7 +74,7 @@
         <!--视频-->
         <ul class="video" v-if="type === 'video'">
             <!--添加视频-->
-            <li class="add video-btn" v-show="!video" @click="addVideo">
+            <li class="add video-btn" :class="{disabled: isReadonly}" v-show="!video" @click="addVideo">
                 <div class="text-icon">
                     <span class="iconfont icon-tianjiashipin icon"></span>
 <!--                    <kdx-svg-icon type="icon-full-right" class="icon"></kdx-svg-icon>-->
@@ -245,10 +245,14 @@
                     this.$refs['image_selector'].selectFile()
                     return
                 }
-                this.$refs['image_selector'].setValue();
+                if(this.$refs['image_selector']) {
+                    this.$refs['image_selector'].setValue();
+                }
             },
             addVideo() {
-                this.$refs['video_selector'].setValue();
+                if(this.$refs['video_selector']) {
+                    this.$refs['video_selector'].setValue();
+                }
             },
             // 删除图片 index图片索引
             deleteImage(index) {
@@ -448,6 +452,14 @@
                 align-items: center;
                 cursor: pointer;
                 border-radius: 2px;
+                &.disabled {
+                    background-color: #f7f7f7;
+                    border: 1px solid var(--border-color)!important;
+                    cursor: not-allowed;
+                    span {
+                        color: rgba(38, 43, 48, 0.6)!important;
+                    }
+                }
                 > .text-icon {
                     text-align: center;
                     line-height: normal;

@@ -45,6 +45,7 @@
                 <!--<span v-if="data.create_from === '0'" class="iconfont icon-baiduxiaochengxu icon"></span>-->
                 <!--h5-->
                 <span v-if="data.create_from == '10'" class="iconfont icon-H icon"></span>
+                <span style="color:#12aa9c;font-size:16px" class="iconfont icon-PCduan" v-if="data.create_from === '70'"></span>
                 <span>{{data.order_no}}</span>
                 <kdx-copy-text type="qrCode" :text="data.order_no">
                     <Button type="text" size="small">复制</Button>

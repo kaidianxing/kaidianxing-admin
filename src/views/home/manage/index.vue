@@ -75,6 +75,9 @@ export default {
                 case 'wechat':
                     url = '/home/wechat/config/achieve'
                     break;
+                case 'pc':
+                    url = '/home/pc/goods/list'
+                    break;
                 case 'douyin':
                     url = '/home/config/douyin'
                     break;

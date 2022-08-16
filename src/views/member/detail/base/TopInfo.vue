@@ -478,6 +478,11 @@ export default {
 					type: "icon-qudao-douyin-gary",
 					name: "抖音小程序",
 				},
+                70: {
+                    class: "icon-PCduan icon-pc",
+                    type: "icon-zujian-shangpinzu-danlieshangpin",
+                    name: "PC商城",
+                },
 			};
 			// eslint
 			let sources = this?.user?.all_source || [];
@@ -929,6 +934,10 @@ export default {
 		.color-toutiaoxiaochengxu {
 			color: #239bff;
 		}
+        .icon-PCduan{
+            font-size: 16px;
+            color:#11aa9c ;
+        }
 	}
 }
 .asset-information {

@@ -42,6 +42,9 @@
                 <Tooltip content="手机浏览器H5" placement="top">
                     <span v-if="item.create_from == '10'" class="iconfont icon-H icon"></span>
                 </Tooltip>
+                <Tooltip content="PC" placement="top">
+                    <span v-if="item.create_from == '70'" class="iconfont icon-PCduan "></span>
+                </Tooltip>
                 <!-- 活动订单标识 -->
                 <!-- 秒杀 -->
                 <div v-if="item.activity_type == 2" class="activity-icon">
@@ -311,6 +314,12 @@ export default {
             vertical-align: middle;
         }
 
+        .icon-PCduan{
+            color:#12aa9c;font-size:20px;
+            margin-right: 5px;
+            position: relative;
+            top: 3px;
+        }
         .icon-weixin {
             color: $success-color;
         }

@@ -143,6 +143,10 @@
                                             <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2" v-else-if="item.client_type === '30'"></kdx-svg-icon>
                                             <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban" v-else-if="item.client_type === '32'"></kdx-svg-icon>
                                             <kdx-svg-icon class="iconfont" type="icon-douyin" v-else-if="item.client_type === '31'"></kdx-svg-icon>
+                                            <span
+                                                class="iconfont icon-PCduan"
+                                                v-else-if="item.client_type === '70'"
+                                            ></span>
                                             <!-- <span
                                                 class="iconfont icon-zhifubaoxiaochengxu"
                                                 v-if="item.source === '5'"

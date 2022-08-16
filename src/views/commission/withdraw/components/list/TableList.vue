@@ -84,6 +84,7 @@
                                                 <kdx-svg-icon class="iconfont" type="icon-qudao-toutiao2" v-else-if="list.client_type === '30'"></kdx-svg-icon>
                                                 <kdx-svg-icon class="iconfont" type="icon-qudao-toutiaojisuban" v-else-if="list.client_type === '32'"></kdx-svg-icon>
                                                 <kdx-svg-icon class="iconfont" type="icon-douyin" v-else-if="list.client_type === '31'"></kdx-svg-icon>
+                                                <span class="iconfont icon-PCduan" v-else-if="list.client_type === '70'"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -521,6 +522,10 @@ export default {
                                     line-height: 20px;
                                     color: $brand-color;
                                     cursor: pointer;
+                                }
+                                .icon-PCduan{
+                                    font-size: 16px;
+                                    color:#11aa9c ;
                                 }
                             }
                         }

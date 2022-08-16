@@ -196,6 +196,60 @@ export const homeApi = {
         method: 'post',
         api: 'manage/channel/index/set-status'
     },
+    // 获取微信关注回复
+    getWechatFollowReply: {
+        method: 'get',
+        api: 'manage/wechat/wechat-rule/edit-attention'
+    },
+    // 公众号设置菜单处理
+    setMenu: {
+        method: "post",
+        api: 'manage/wechat/menu/add',
+    },
+    editMenu: {
+        method: "post",
+        api: 'manage/wechat/menu/edit',
+
+    },
+    keyWorkList: {
+        method: "get",
+        api: "manage/wechat/wechat-rule-keyword/simple-list"
+    },
+    // 设置微信关注回复
+    setWechatFollowReply: {
+        method: 'post',
+        api: 'manage/wechat/wechat-rule/add-attention'
+    },
+    // 获取关键词列表
+    getKeywordList: {
+        method: 'get',
+        api: 'manage/wechat/wechat-rule/list'
+    },
+    // 删除关键词
+    deleteKeyWord: {
+        method: 'post',
+        api: 'manage/wechat/wechat-rule/delete'
+    },
+    // 检测关键词是否重复
+    checkKeyWord: {
+        method: 'post',
+        api: 'manage/wechat/wechat-rule-keyword/check-keyword'
+    },
+    // 添加关键词
+    addKeyWord: {
+        method: 'post',
+        api: 'manage/wechat/wechat-rule/add'
+    },
+    // 编辑关键词
+    getKeyWord: {
+        method: 'get',
+        api: 'manage/wechat/wechat-rule/edit'
+    },
+    // 更新关键词
+    updateKeyWord: {
+        method: 'post',
+        api: 'manage/wechat/wechat-rule/update'
+    },
     // 手动添加公众号配置
     setWechatConfig: {
         method: 'post',
@@ -221,10 +275,203 @@ export const homeApi = {
         method: 'post',
         api: 'manage/wechat/index/test'
     },
+    // 获取粉丝列表
+    getWechatFansList: {
+        method: 'get',
+        api: 'manage/wechat/wechat-fans/list'
+    },
+    // 同步所有粉丝
+    syncWechatFans: {
+        method: 'post',
+        api: 'manage/wechat/wechat-fans/sync'
+    },
+    // 打标签
+    setWechatFansLabel: {
+        method: 'post',
+        api: 'manage/wechat/wechat-fans/change-tag'
+    },
+    // 粉丝黑名单状态修改
+    setWechatBlackStatus: {
+        method: 'post',
+        api: 'manage/wechat/wechat-fans/black'
+    },
+    // 获取公众号粉丝标签列表
+    getWechatFansLabelList: {
+        method: 'get',
+        api: 'manage/wechat/wechat-fans-tag/list'
+    },
+    // 创建、修改公众号粉丝标签
+    createWechatFansLabel: {
+        method: 'post',
+        api: 'manage/wechat/wechat-fans-tag/save'
+    },
+    // 删除公众号粉丝标签
+    deleteWechatFansLabel: {
+        method: 'post',
+        api: 'manage/wechat/wechat-fans-tag/delete'
+    },
+    // 同步标签
+    syncWechatFansLabel: {
+        method: 'post',
+        api: 'manage/wechat/wechat-fans-tag/sync'
+    },
     // 获取公众号绑定类型
     getWechatBindType: {
         method: 'get',
         api: ''
     },
+    // 素材同步
+    syncLib: {
+        method: "get",
+        api: "manage/wechat/media/sync",
+    },
+    // 素材同步完了需要调用一个任务队列的信息
+    syncLibStatus: {
+        method: "get",
+        api: "manage/wechat/wechat-sync/get-task-info",
+    },
+    // 获取素材的资源
+    getSyncLibItems: {
+        method: "get",
+        api: "manage/wechat/media/list",
+    },
+    // 根据media_id 删除
+    deleteByMediaId: {
+        method: "post",
+        api: "manage/wechat/media/delete"
+    },
+    // 自定义菜单列表
+    customMenuList: {
+        method: "get",
+        api: "manage/wechat/menu/list",
+    },
+    // 禁用菜单
+    disableMenu: {
+        method: "post",
+        api: "manage/wechat/menu/enable",
+    },
+    // 删除
+    deleteMenu: {
+        method: "post",
+        api: "manage/wechat/menu/delete",
+    },
+    // 获取任务信息
+    getTaskInfo: {
+        method: 'get',
+        api: 'manage/wechat/wechat-sync/get-task-info'
+    },
+    // 素材上传
+    uploadLib: {
+        method: "post",
+        api: "manage/wechat/media/upload"
+    },
+    // 获取编辑数据
+    menuEditById: {
+        method: "get",
+        api: "manage/wechat/menu/edit",
+    },
 
+    // --------------------- pc渠道----------------------
+
+    // --商品组管理
+    goodsGroupList: {//商品组列表
+        method: "get",
+        api: "manage/pc/goods-group/list",
+    },
+    goodsGroupTypes: {//商品组类型
+        method: "get",
+        api: "manage/pc/goods-group/types",
+    },
+    goodsGroupAdd: {//添加商品组
+        method: "post",
+        api: "manage/pc/goods-group/add",
+    },
+    goodsGroupDelete: {//删除商品组
+        method: "post",
+        api: "manage/pc/goods-group/delete",
+    },
+    goodsGroupEdit: {//编辑保存商品组
+        method: "post",
+        api: "manage/pc/goods-group/edit",
+    },
+    goodsGroupDetail: {//商品组详情
+        method: "get",
+        api: "manage/pc/goods-group/detail",
+    },
+    // --菜单管理
+    menuList: {//菜单列表
+        method: "get",
+        api: "manage/pc/menus/list",
+    },
+    menuDelete: {
+        method: "post",
+        api: "manage/pc/menus/delete",//删除
+    },
+    menuEdit: {
+        method: "post",
+        api: "manage/pc/menus/edit",//编辑
+    },
+    menuAdd: {
+        method: "post",
+        api: "manage/pc/menus/add",//新增
+    },
+    menuDetail: {
+        method: "get",
+        api: "manage/pc/menus/detail",//详情
+    },
+    changeStatus: {
+        method: "post",
+        api: "manage/pc/menus/change-status",//显示隐藏
+    },
+
+    //---客服管理
+    servicGet: {
+        method: "get",
+        api: "manage/pc/sysset/customer-service/get",//客服管理获取
+    },
+    servicSet: {
+        method: "post",
+        api: "manage/pc/sysset/customer-service/set",//客服管理设置
+    },
+    //---版权
+    copyrightSet: {
+        method: "post",
+        api: "manage/pc/sysset/copyright/set",//版权设置
+    },
+    copyrightGet: {
+        method: "get",
+        api: "manage/pc/sysset/copyright/get",//获取版权设置
+    },
+
+    //---基础设置
+    basicGet: {
+        method: "get",
+        api: "manage/pc/sysset/basic/get",//基本设置 - 获取
+    },
+    basicSet: {
+        method: "post",
+        api: "manage/pc/sysset/basic/set",//基本设置 - 设置
+    },
+    //--广告设置
+    advertiseList: {
+        method: "get",
+        api: "manage/pc/home-ads/list",//广告列表
+    },
+    advertiseEdit: {
+        method: "post",
+        api: "manage/pc/home-ads/edit",//广告编辑
+    },
+    advertiseDelete: {
+        method: "post",
+        api: "manage/pc/home-ads/delete",//删除
+    },
+    advertiseAdd: {
+        method: "post",
+        api: "manage/pc/home-ads/add",//新增
+    },
+    advertiseDetail: {
+        method: "get",
+        api: "manage/pc/home-ads/detail",//详情
+    },
+    // --------------------- pc渠道----------------------
 }

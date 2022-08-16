@@ -55,6 +55,14 @@
                         </Button>
 
                     </template>
+                    <!-- pc商城 -->
+                    <template v-else-if="item.identity === 'pc'">
+                        <Button class="primary-long" :class='{noManagePerm:noWxManagePerm}'
+                                :disabled='noPCManagePerm' v-if="getItemInfo(item).status"
+                                @click="handleManage('pc')">
+                            PC端管理
+                        </Button>
+                    </template>
                     <!--微信公众号-->
                     <template v-else-if="item.identity === 'wechat'">
                         <Button class="primary-long" v-if="getItemInfo(item).connect"
@@ -97,7 +105,7 @@
                     </template>
                     <!--  程序码 qrcode_url="https://shuke-20.v6.getpkg.cn//tmp/wxapp/3/unlimited/8417f99a234ab6d1d56e876c0058479c.jpg?v=1640936750550" -->
                     <kdx-hint-tooltip
-                        v-if="getItemInfo(item).status && item.identity != 'wap'"
+                        v-if="getItemInfo(item).status && item.identity != 'wap' && item.identity != 'pc'"
                         type="qrCode"
                         :qrcode_url="`${getItemInfo(item).src}?v=${new Date().getTime()}`"
                         text=""
@@ -107,7 +115,7 @@
                     <!--  二维码 -->
 
                     <kdx-hint-tooltip
-                        v-else-if="getItemInfo(item).status && item.identity === 'wap'"
+                        v-else-if="getItemInfo(item).status && (item.identity === 'wap' || item.identity === 'pc' ) "
                         type="qrCode"
                         :url="getItemInfo(item).src"
                         text="复制页面链接"
@@ -150,8 +158,23 @@
                             </Button>
                         </template>
                     </template>
+                    <template v-else-if="item.identity === 'pc'">
+                        <template v-if="getItemInfo(item).status">
+
+                            <Button type="text" :class='{noManagePerm:noManagePerm}'
+                                    :disabled='noPCManagePerm' @click="changeStatus('0','70')">
+                                关闭访问
+                            </Button>
+                        </template>
+                        <template v-else>
+                            <Button type="text" :class='{noManagePerm:noManagePerm}'
+                                    :disabled='noPCManagePerm' @click="changeStatus('1', '70')">
+                                开启访问
+                            </Button>
+                        </template>
+                    </template>
                     <template v-else>
-                        <Button style="visibility: hidden" type="text">关闭访问</Button>
+                        <Button style="visibility: hidden" :disabled='noPCManagePerm' type="text">关闭访问</Button>
                     </template>
                 </div>
             </div>
@@ -174,6 +197,10 @@ export default {
         },
         noTtManagePerm() { // tt管理权限
             return !this.$getPermMap('channel.byteDance.manage')
+        },
+        noPCManagePerm() { // PC管理权限
+            // return !this.$getPermMap('channel.pc.manage')
+            return false
         },
     },
     props: {
@@ -222,6 +249,12 @@ export default {
                         icon: 'icon-douyin'
                     }
                 case 'wap': // H5
+                    return {
+                        src: item?.channel_info?.url,
+                        status: item?.channel_info?.is_open == 1,
+                        icon: 'icon-H'
+                    }
+                case 'pc': // pc
                     return {
                         src: item?.channel_info?.url,
                         status: item?.channel_info?.is_open == 1,

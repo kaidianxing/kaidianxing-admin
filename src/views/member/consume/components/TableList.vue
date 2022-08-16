@@ -127,6 +127,11 @@
                                     <span class="iconfont icon-H icon"></span>
                                 );
                             }
+                            else if(params.row.source == '70'){
+                                component = (
+                                    <span style="color:#12aa9c;font-size:16px" className="iconfont icon-PCduan"></span>
+                                )
+                            }
                             // 百度小程序
                             // <span v-if="list.create_from === '0'" class="iconfont icon-baiduxiaochengxu icon"></span>
                             return (

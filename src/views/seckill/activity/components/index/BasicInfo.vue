@@ -41,6 +41,9 @@
                     <Checkbox label="30" :disabled="type !== 'add'">
                         头条/抖音小程序
                     </Checkbox>
+                    <Checkbox label="70" :disabled="type !== 'add'">
+                        PC版
+                    </Checkbox>
                 </CheckboxGroup>
             </FormItem>
             <FormItem label="秒杀商品：" ref="goods_list" prop="goods_list">

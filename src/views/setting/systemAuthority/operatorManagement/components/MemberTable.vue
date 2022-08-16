@@ -38,7 +38,8 @@ export default {
                             '21': <kdx-svg-icon type="icon-weixinxiaochengxu" class="platform-icon"></kdx-svg-icon>, // 微信小程序
                             '30': <kdx-svg-icon type="icon-qudao-toutiao2" class="platform-icon"></kdx-svg-icon>, // 头条小程序
                             '31': <kdx-svg-icon type="icon-douyin" class="platform-icon"></kdx-svg-icon>, // 头条小程序
-                            '32': <kdx-svg-icon type="icon-qudao-toutiaojisuban" class="platform-icon"></kdx-svg-icon> // 抖音小程序
+                            '32': <kdx-svg-icon type="icon-qudao-toutiaojisuban" class="platform-icon"></kdx-svg-icon>, // 抖音小程序
+                            '70': <span style="color:#12aa9c;font-size:16px" class="iconfont icon-PCduan"></span>
                         }
                         let svgComponent = sourceTmp[params.row.source];
                         return (
