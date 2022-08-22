@@ -230,6 +230,12 @@ export default [
                 path: '/setting/system/attachment'
             },
             {
+                name: '远程存储',
+                component: () => import('@/views/setting/system/storage/index.vue'),
+                perm: 'system.storage.view',
+                path: '/setting/system/storage'
+            },
+            {
                 name: '清除缓存',
                 component: () => import('@/views/setting/system/tools/cache.vue'),
                 perm: 'system.tools.cache.view',

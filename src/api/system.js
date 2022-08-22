@@ -37,6 +37,32 @@ export const systemApi = {
         method: 'post',
         api: 'manage/system/attachment/set'
     },
+    //------------------远程存储------------------------
+    // 获取远程存储设置
+    getStorage: {
+        method: 'get',
+        api: 'manage/system/storage/get'
+    },
+    // 设置远程存储设置
+    setStorage: {
+        method: 'post',
+        api: 'manage/system/storage/set'
+    },
+    // 获取阿里云存储列表
+    getAliBucket: {
+        method: 'post',
+        api: 'manage/system/storage/get-oss-bucket'
+    },
+    // 获取七牛云域名列表
+    getQiniuUrl: {
+        method: 'post',
+        api: 'manage/system/storage/get-qiniu-domain'
+    },
+    // 获取腾讯云存储列表
+    getTencentBucket: {
+        method: 'post',
+        api: 'manage/system/storage/get-cos-bucket'
+    },
     //----------------------清除缓存-------------------
     // 系统维护-缓存数据
     getCacheData: {

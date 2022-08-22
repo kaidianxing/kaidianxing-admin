@@ -293,6 +293,12 @@ export default {
                     perm: "system.attachment.view",
                     path: "/setting/system/attachment",
                 },
+                remoteStorage: {
+                    title: "远程存储",
+                    name: "远程存储",
+                    perm: "system.storage.view",
+                    path: "/setting/system/storage",
+                },
                 maintain: {
                     title: "清除缓存",
                     name: "清除缓存",
