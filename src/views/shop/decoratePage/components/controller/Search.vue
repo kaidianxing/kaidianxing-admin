@@ -102,7 +102,11 @@
                     label: '商城商品',
                     icon: 'ivu-icon ivu-icon-ios-contract',
                     id: '0'
-                },],
+                }, {
+                    label: '积分商城商品',
+                    icon: 'ivu-icon ivu-icon-ios-contract',
+                    id: '1'
+                }],
                 searchStyles: [{
                     label: '直角',
                     icon: 'iconfont icon-zujian-sousuo-zhijiao',

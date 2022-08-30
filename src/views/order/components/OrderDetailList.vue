@@ -23,8 +23,13 @@
             <div class="shop-total-box">
                 <div class="shop-total-content payment">
                     <div class="label">实付款：</div>
+                    <!-- 积分商城价格 -->
+                    <div class="number price" v-if="data.activity_type === '5'">
+                        <div v-if="!data.pay_price">{{ data.pay_credit }} 积分</div>
+                        <div v-else>{{ data.pay_credit }} 积分 + ￥{{ data.pay_price }}</div>
+                    </div>
                     <!-- 普通 -->
-                    <div class="number price">￥{{ data.pay_price }}</div>
+                    <div class="number price" v-else>￥{{ data.pay_price }}</div>
                 </div>
             </div>
             <!--维权退款-->
@@ -597,15 +602,26 @@ export default {
             return result
         },
         handlePrice() {
+            if (this.data.activity_type === '5') {
+                if (this.data.goods_price == '0') {
+                    return (`${this.data.pay_credit} 积分`)
+                } else {
+                    return (`${this.data.pay_credit} 积分 + ￥${this.data.goods_price}`)
+                }
+            }
             return (`￥${this.data.goods_price}`)
         },
     },
     created() {},
     methods: {
+        // 适配积分商城优惠券主图
         goodsImage(index) {
             if (!this.data.orderGoods[index].thumb) {
                 if (this.data.orderGoods[index].ext_field.coupon_sale_type == '1') {
                     return (require('@/assets/image/coupons/full-reduction.png'))
+                }
+                if (this.data.orderGoods[index].ext_field.coupon_sale_type == '2') {
+                    return (require('@/assets/image/coupons/discount.png'))
                 }
             }
             return (this.$media(this.data.orderGoods[index].thumb))

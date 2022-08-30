@@ -252,6 +252,8 @@ export function getPreviewUrl(type, id, url) {
         url = `${url}/kdxMember/index/index`;
     } else if (type === 'page-commission') { // 分销
         url = `${url}/kdxCommission/index/index`;
+    } else if (type === 'creditShop') { // 积分商城
+        url = `${url}/kdxCreditShop/detail?id=${id}`
     }
     return hash2Query(url)
 }

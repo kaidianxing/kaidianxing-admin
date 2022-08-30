@@ -16,7 +16,18 @@
         >
             <template #header>
                 <div class="shop-payment payment">
-                    <div class="shop-payment-price">
+                    <!-- 积分商城订单显示 -->
+                    <div class="credit-shop-price" v-if="list.activity_type === '5'">
+                        <div class="line"></div>
+                        <div class="goods-item">
+                            <span class="price bold" v-if="!list.pay_price">{{ list.pay_credit }} 积分</span>
+                            <span class="price bold" v-else>{{ list.pay_credit }} 积分 + ￥{{ list.pay_price }}</span>
+                        </div>
+                        <p class="bold" v-if="list.dispatch_price">
+                            (含运费：￥{{ list.dispatch_price }})
+                        </p>
+                    </div>
+                    <div class="shop-payment-price" v-else>
                         <span>
                             ￥{{ list.pay_price }}
                         </span>

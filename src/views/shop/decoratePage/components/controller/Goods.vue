@@ -43,6 +43,14 @@
                 </form-item>
                </template>
 
+                <!-- 积分商品 -->
+               <template v-else-if="currentModal.params.goodstype == '1'">
+                    <form-item label="选择商品：" :class="{'mb-10': currentModal.params.creditgoodsdata!='1'}">
+                        <MyRadioGroup :items='creditGoodsOpts' v-model='currentModal.params.creditgoodsdata' @change="creditTypeChange">
+                        </MyRadioGroup>
+                    </form-item>
+               </template>
+
                 <div v-if="showLimitAndSort">
                     <form-item label="显示数量：" class="mb-10">
                         <MyDraggableProgress :min='1' :max='50' unit='件' v-model='currentModal.params.goodsnum'></MyDraggableProgress>
@@ -398,17 +406,50 @@
                     label: '样式二',
                     id:'1'
                 }],
+                creditGoodsOpts: [{ // 积分商品选择
+                    label: '手动选择',
+                    id: '0'
+                }, {
+                    label: '全部积分商品',
+                    id: '1'
+                }]
             }
         },
         methods: {
             goodsTypeChange(e){
+                // 积分商品默认不显示角标
                 if(e == '1') {
                     this.currentModal.params.showicon = '0'
+                    // 更新后重新请求
+                    if(this.currentModal.params.creditgoodsdata!=0){
+                        this.getCreditAllGoods()
+                    }
                 }
                 this.currentModal.data.splice(0)
             },
-            creditTypeChange(){
-                this.currentModal.data.splice(0)
+            creditTypeChange(e){
+                if(e=='1') {
+                    this.getCreditAllGoods()
+                } else {
+                    this.currentModal.data.splice(0)
+                }
+            },
+            getCreditAllGoods(){
+                let params = Object.assign(
+                    {
+                        status: "1",
+                    },
+                    this.search
+                );
+
+            this.$api.creditShopApi
+                .getList(params)
+                .then((res) => {
+                    if (res.error === 0) {
+                        this.currentModal.data = res.list.map(item => this.adapterData(item))
+                    }
+                })
+                .catch();
             },
             handleChangeType(){
                 let {goodsscroll, goodstype} = this.currentModal.params
@@ -486,26 +527,47 @@
                 }
             },
             adapterData(item){ // 转换数据
-                let {id, thumb,sale,type: act_type} = item
+                let {id, thumb,sale,type: act_type,credit_shop_stock} = item
                 let result = {
                     id: id,
                     gid: id,
                     thumb,
                     act_type, 
                     sales: +sale,
+                    stock: credit_shop_stock,
+                    credit_shop_credit: item.credit_shop_credit,
+                    credit_shop_price: item.credit_shop_price,
                     bargain: 0,
                     credit: 0,
                     ctype: 0,
                     type: act_type
                 }
-                let {title,sub_name,has_option, price, goods_type:type} = item
-                result = {
-                    ...result, 
-                    title,
-                    sub_name,
-                    has_option,
-                    type,
-                    productprice: price,
+                // 积分商品
+                if(item.type == '1') {
+                    let {coupon_name: title,content:sub_title, coupon_sale_type,shop_coupon_balance, shop_coupon_credit} = item
+                    result = {
+                        ...result, 
+                        title,
+                        sub_title,
+                        coupon_sale_type,
+                        shop_coupon_balance,
+                        shop_coupon_credit
+                    }
+
+                } else {
+                    let {title,sub_name,has_option, price, goods_type:type} = item
+                    result = {
+                        ...result, 
+                        title,
+                        sub_name,
+                        has_option,
+                        type,
+                        productprice: price,
+                    }
+                    if(has_option =='1'){
+                        result.credit_shop_credit = item.rules?.min?.credit_shop_credit
+                        result.credit_shop_price =item.rules?.min?.credit_shop_price
+                    }
                 }
                 return result
             },

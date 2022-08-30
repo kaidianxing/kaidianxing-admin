@@ -44,6 +44,7 @@ const menuList = [
             {name: '直播间选择器', type: 'LinkLiverLink'},
             {name: '视频号直播间', type: 'LinkVideoLiveLink'},
             {name: '视频号动态', type: 'LinkVideoRamLink'},
+            {name: '积分商品', type: 'LinkCreditShopLink'},
         ]
     }, {
         title: '其他',

@@ -150,11 +150,83 @@ class GoodsUpdater extends Updater {
         })
     }
 }
+class CreditGoodsUpdater extends Updater {
+    adapterData(item) { // 转换数据
+        let { id, thumb, sale, type: act_type, credit_shop_stock } = item
+        let result = {
+            id: id,
+            gid: id,
+            thumb,
+            act_type,
+            sales: +sale,
+            stock: credit_shop_stock,
+            credit_shop_credit: item.credit_shop_credit,
+            credit_shop_price: item.credit_shop_price,
+            bargain: 0,
+            credit: 0,
+            ctype: 0,
+            type: act_type
+        }
+        // 积分商品
+        if (item.type == '1') {
+            let { coupon_name: title, content: sub_title, coupon_sale_type, shop_coupon_balance, shop_coupon_credit } = item
+            result = {
+                ...result,
+                title,
+                sub_title,
+                coupon_sale_type,
+                shop_coupon_balance,
+                shop_coupon_credit
+            }
+
+        } else {
+            let { title, sub_title, has_option, price, goods_type: type } = item
+            result = {
+                ...result,
+                title,
+                sub_title,
+                has_option,
+                type,
+                productprice: price,
+            }
+            if (has_option == '1') {
+                result.credit_shop_credit = item.rules?.min?.credit_shop_credit
+                result.credit_shop_price = item.rules?.min?.credit_shop_price
+            }
+        }
+        return result
+    }
+
+    getGoodsList = (item) => {
+        return new Promise((resolve) => {
+            let params = {
+                status: "1",
+            }
+
+            if (item.params.creditgoodsdata == '0') {
+                params.id = item.data.map(v => v.id).join(',')
+                params.pagesize = item.data.length
+            }
+            api.creditShopApi
+                .getList(params)
+                .then((res) => {
+                    if (res.error === 0) {
+                        let list = res.list.map(item => this.adapterData(item))
+                        resolve(list)
+                        console.log(list,'listlist')
+                    }
+                })
+                .catch();
+        })
+    }
+}
 class Goods {
     update(item) {
         let updater;
         if (item.params.goodstype == '0') {
             updater = new GoodsUpdater()
+        } else if (item.params.goodstype == '1') {
+            updater = new CreditGoodsUpdater()
         }
         updater.getGoodsList(item).then(data => {
             item.data = data.map(item => {

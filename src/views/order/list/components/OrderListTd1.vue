@@ -83,6 +83,12 @@ export default {
                         goodsText: '密'
                     }
                     break;
+
+                case '4':
+                    type = {
+                        goodsName: 'credit_shop_coupon',
+                        goodsText: '券'
+                    }
             }
             return type;
         },
@@ -152,6 +158,11 @@ export default {
                 &.secret {
                     background-color: #FFCDD0;
                     color: #FF000F;
+                }
+                
+                &.credit_shop_coupon {
+                    background-color: #FFF9E6;
+                    color: #FF9900;
                 }
             }
         }

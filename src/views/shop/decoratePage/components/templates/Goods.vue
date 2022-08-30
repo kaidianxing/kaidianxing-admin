@@ -239,8 +239,8 @@
                 }
             },
             hasLimitGoods(){
-                let {goodsdata,goodstype} = this.insideParams
-                return (goodstype=='0' && goodsdata!=0)|| (goodstype==1)
+                let {goodsdata,goodstype,creditgoodsdata} = this.insideParams
+                return (goodstype=='0' && goodsdata!=0)|| (goodstype==1&&creditgoodsdata!=0)
             },
             limitNumData() {
                 if (this.getGoodsList ?.length > 0) {
@@ -413,6 +413,14 @@
               this.insideParams.commisionstyle!= '-1')
             },
             getThumb(row){
+                if(row.act_type == '1'){
+                    let suffix = ''
+                    if(this.insideStyle?.liststyle.indexOf('one')>-1){
+                        suffix = '_block'
+                    }
+                    let path = row.coupon_sale_type=='2'?`creditShop/discount${suffix}.png`: `creditShop/full${suffix}.png`
+                    return this.$utils.staticImg(path)
+                }
                 return this.$utils.media(row.thumb)
             },
             getDelPrice(row){
@@ -445,9 +453,16 @@
                 return row.productprice>=0
             },
             getPrice(item){
-                return this.formatMoney(item.price)
+                if(typeof item.act_type === 'undefined'){
+                    return this.formatMoney(item.price)
+                }
+                
+                return `${this.formatMoney(item.credit_shop_price)}`
             },
-            getCredit(){
+            getCredit(item){
+                if(item.act_type && item?.credit_shop_credit){
+                    return `${item?.credit_shop_credit}${this.credit_text}`
+                }
                 return ''
             },
             formatMoney(money) {

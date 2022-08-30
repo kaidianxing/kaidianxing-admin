@@ -74,6 +74,7 @@ export default {
                     this.$Message.info('该功能暂未开启，敬请期待')
                 }
             } else {
+                console.log(item, this.permList,887656)
                 this.$Message.info('暂无权限')
             }
         },

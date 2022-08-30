@@ -210,10 +210,13 @@
             };
         },
         computed: {
+            // 适配积分商城优惠券主图
             goodsImage() {
                 if (!this.data[0].thumb) {
                     if (this.data[0]?.ext_field?.coupon_sale_type == '1') {
                         return (require('@/assets/image/coupons/full-reduction.png'))
+                    } else if (this.data[0]?.ext_field?.coupon_sale_type == '2') {
+                        return (require('@/assets/image/coupons/discount.png'))
                     } else {
                         return (this.$media(this.data[0].thumb))
                     }

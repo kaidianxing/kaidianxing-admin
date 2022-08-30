@@ -831,6 +831,7 @@ export const goods = {
         'showprice': '1',
         'showtag': '0',
         'goodsdata': '0',
+        'creditgoodsdata': '0',
         'cateid': '',
         'catename': '',
         'catethumb': '',
@@ -2267,5 +2268,50 @@ export const groups = {
     },
     data: [],
 }
-
+export const credit = { // 积分信息
+    id: 'credit',
+    type: 'credit',
+    max: 1,
+    style: {
+        styletype: 'one', // 样式一
+        bgcolor: '#ffffff',
+        iconcolor: '#b6b6b6',
+        textcolor: '#c2c2c2',
+        tempcolor: '#3e4153',
+        cardcolor: '#fc6317',
+        borderadius: 12,
+        membercolor: '#ffffff',
+        creditcolor: '#ffffff',
+        rulecolor: '#ffffff',
+        recordiconcolor: '#212121',
+        recordtextcolor: '#212121',
+        recordbcolor: '#ffffff',
+        ordericoncolor: '#212121',
+        ordertextcolor: '#212121',
+        orderbcolor: '#ffffff',
+        btncolor: '#ffffff',
+        bordercolor: '#e6e7eb',
+        margintop: 32,
+        marginbottom: 16,
+        marginleft: 24,
+        betweenmargin: 16,
+    },
+    params: {
+        showsearch: '1',
+        temptype: 'color',
+        tempimg: '',
+        tiptext: '搜索积分商品',
+        cardtype: 'img',
+        cardimg: utils.staticImg('creditShop/info-bg.png'),
+        creditBtn: ['0', '1'],
+        recordicon: 'iconfont-def icon-def-jifen1',
+        ordericon: 'iconfont-def icon-def-dingdan1',
+    },
+    info: {
+        avatar: '',
+        nickname: '',
+        credit: '0',
+    },
+    data: []
+}
 

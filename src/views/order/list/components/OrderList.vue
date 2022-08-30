@@ -45,8 +45,13 @@
                                     <!--商品价格、数量-->
                                     <td>
                                         <div class="shop-price-number price">
+                                            <!--积分商城商品单价-->
+                                            <p v-if="list.activity_type === '5'">
+                                                <span v-if="goods.price_unit == ''">{{ goods.credit_unit }} 积分</span>
+                                                <span v-else>{{ goods.credit_unit }} 积分 + ￥{{ goods.price_unit }}</span>
+                                            </p>
                                             <!-- 其他普通商品单价 -->
-                                            <p>￥{{ goods.price_unit }}</p>
+                                            <p v-else>￥{{ goods.price_unit }}</p>
                                             <p>X {{ goods.total }}</p>
                                         </div>
                                     </td>

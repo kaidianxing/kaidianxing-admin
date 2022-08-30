@@ -84,7 +84,7 @@
                                     }
                                 })
                             } else {
-                                let custom_link = '/pagesCustom/index/index'
+                                let custom_link = '/kdxCustom/index/index'
                                 
                                 if (this.$Route ?.path == menu.target_url) {
                                     menu.active = true
