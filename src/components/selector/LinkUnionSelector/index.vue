@@ -96,7 +96,7 @@ export default {
         // 默认tab显示的tab列
         tabName: {
             type: String,
-            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
+            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomPageLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
         },
         disabledLink: {
             type: Array,

@@ -83,6 +83,8 @@ export default {
                 path = '/decorate/goods-detail'
             } else if (row.type == '12') {
                 path = '/decorate/vip-center'
+            } else {
+                path = '/decorate/custom'
             }
             this.$router.push({
                 path: path,
@@ -112,9 +114,12 @@ export default {
             } else if (this.tempType == '12') {
                 path = '/decorate/vip-center'
                 id = 3
-            }else {
+            }else if(this.tempType == '10') {
                 path = '/decorate/index'
                 id = 1
+            } else {
+                path = '/decorate/custom'
+                id = ''
             }
             this.$router.push({
                 path,
@@ -155,7 +160,6 @@ export default {
             } else {
                 params.type = this.tab.name
             }
-
             this.$api.shopApi[apiName](params).then(res => {
                 this.table.loading = false
                 if (res.error === 0) {

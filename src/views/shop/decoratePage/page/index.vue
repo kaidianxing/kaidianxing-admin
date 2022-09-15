@@ -98,6 +98,7 @@
         index: 10, //首页
         'goods-detail': 11, //商品详情
         'vip-center': 12, //会员中心
+        custom: 0, //自定义页面
         'distribution': 20, //分销页面
     }
     //关注点分离
@@ -385,6 +386,15 @@
             let pageId = this.$route.params.page
             this.pageId = pageId
             let options; // 更多配置
+            if (pageId === 'custom') {
+                let pageItem = this.$route.query.pageItem, pageItemId = this.$route.query?.[`${pageItem}Id`];
+                if (pageItem && pageItemId) {
+                    options = {
+                        pageItem,
+                        pageItemId
+                    }
+                }
+            }
             getPage.call(this, {
                 pageId, //页面类型index：商城首页，goods-dettail：商品详情,vip-center：会员中心
                 type: this.$route.query.type, //操作类型edit：编辑 ；add:添加

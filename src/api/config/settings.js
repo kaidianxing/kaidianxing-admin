@@ -24,25 +24,25 @@
 //     "route": "history"
 // }
 var config = {
-    "base_url": "http://kdx-free-mbw.v5dev.getpkg.cn/api",
-    "attachment_url": "http://kdx-free-mbw.v5dev.getpkg.cn/data/attachment/",
-    "public_url": "http://kdx-free-mbw.v5dev.getpkg.cn/",
-    "wap_dist_url": "http://kdx-free-mbw.v5dev.getpkg.cn/static/dist/shop/kdx_wap/",
-    "route": "history"
-}
+	base_url: 'http://yuning-free.kdxdev.com/api',
+	attachment_url: 'http://yuning-free.kdxdev.com/data/attachment/',
+	public_url: 'http://yuning-free.kdxdev.com/',
+	wap_dist_url: 'http://yuning-free.kdxdev.com/static/dist/shop/kdx_wap/',
+	route: 'history',
+};
 try {
-    if (window) {
-        window.config = window.config
-                ? Object.assign(config, window.config)
-                : config;
-        config = window.config;
-    }
+	if (window) {
+		window.config = window.config
+			? Object.assign(config, window.config)
+			: config;
+		config = window.config;
+	}
 } catch (e) {
-    console.log(e);
+	console.log(e);
 }
 
 try {
-    exports.config = config;
+	exports.config = config;
 } catch (e) {
-    console.log(e);
+	console.log(e);
 }

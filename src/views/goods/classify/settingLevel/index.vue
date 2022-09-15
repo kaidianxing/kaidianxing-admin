@@ -64,6 +64,7 @@
                 <FormItem
                     label="显示形式："
                     prop="modal"
+                    v-if="model.template_type == '0'"
                 >
                     <RadioGroup
                         v-model="model.style"
@@ -137,6 +138,9 @@ export default {
             let tmpId = [{
                 id: '0',
                 name: '默认模板'
+            },{
+                id: '1',
+                name: '高级模板'
             }]
             let arr = tmpId.map(v => {
                 return {

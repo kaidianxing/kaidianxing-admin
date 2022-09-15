@@ -70,7 +70,6 @@ export default {
         }),
         pageItems() {
             let items = this.getPageItems(this.$route.params.page)
-            // console.log(JSON.stringify(items),'items----')
             let groups = Object.keys(items).sort((a, b) => {
                 return groupInfo(a).yIndex - groupInfo(b).yIndex
             })

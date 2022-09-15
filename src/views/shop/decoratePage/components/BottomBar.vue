@@ -44,6 +44,7 @@
                     index: 10, //首页
                     'goods-detail': 11, //商品详情
                     'vip-center': 12, //会员中心
+                    custom: 0, //自定义页面
                     'distribution': 20, //分销页面
                 }
                 if (pageTypeId[this.$route.params.page]!=null) {
@@ -60,12 +61,20 @@
                             btntype: 'default'
                         }
                     ]
-                    tabMenu.push({
-                        id: 'asPage',
-                        name: '发布',
-                        btntype: 'primary',
-                        action: 'publish'
-                    })
+                    if (this.$route.params.page !== 'custom') {
+                        tabMenu.push({
+                            id: 'asPage',
+                            name: '发布',
+                            btntype: 'primary',
+                            action: 'publish'
+                        })
+                    } else {
+                        tabMenu.push({
+                            id: 'asPage',
+                            name: '保存',
+                            btntype: 'primary'
+                        })
+                    }
                     return tabMenu
                 } else if (this.$route.params.page == 'diymenu') {
                     return [{
@@ -106,6 +115,11 @@
                         name: '会员中心装修',
                         icon: 'icon-zujian-zhuangxiu-2'
                     }, //会员中心
+                    custom: {
+                        id: 0,
+                        name: '自定义页面装修',
+                        icon: 'icon-zujian-zhuangxiu-2'
+                    }, //自定义页面
                     distribution: {
                         id: 20,
                         name: '分销中心装修',

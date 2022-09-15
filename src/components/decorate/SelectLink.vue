@@ -35,7 +35,7 @@ import UnionSelector from '../selector/LinkUnionSelector'
 export default {
     inject: {
         'chooseTab': {
-            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
+            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomPageLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
         }
     },
     components: {
@@ -66,7 +66,7 @@ export default {
         },
         tabName: {
             type: String,
-            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkWxAppLink,LinkApplicationPlug'
+            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomPageLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkWxAppLink,LinkApplicationPlug'
         },
         btnIcon: {
             type: String,

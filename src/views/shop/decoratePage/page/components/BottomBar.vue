@@ -44,6 +44,7 @@
                     index: 10, //首页
                     'goods-detail': 11, //商品详情
                     'vip-center': 12, //会员中心
+                    custom: 0, //自定义页面
                     'distribution': 20, //分销页面
 
                 }
@@ -61,12 +62,20 @@
                             btntype: 'default'
                         }
                     ]
-                    tabMenu.push({
-                        id: 'asPage',
-                        name: '发布',
-                        btntype: 'primary',
-                        action: 'publish'
-                    })
+                    if (this.$route.params.page !== 'custom') {
+                        tabMenu.push({
+                            id: 'asPage',
+                            name: '发布',
+                            btntype: 'primary',
+                            action: 'publish'
+                        })
+                    } else {
+                        tabMenu.push({
+                            id: 'asPage',
+                            name: '保存',
+                            btntype: 'primary'
+                        })
+                    }
                     return tabMenu
                 } else if (this.$route.params.page == 'diymenu') {
                     return [{

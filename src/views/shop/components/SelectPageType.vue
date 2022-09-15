@@ -56,7 +56,7 @@ export default {
         codeList: {
             type: Array,
             default: () => {
-                return ['10', '11', '12']
+                return ['10', '11', '12', '0']
             }
         }
     },
@@ -90,6 +90,11 @@ export default {
         },
         getPageSet(code) {
             let codeSet = {
+                '0': {
+                    src: require('@/assets/image/shop/module-custom.png'),
+                    text: '自定义页面',
+                    icon: 'icon-zidingyiyemian'
+                },
                 '10': {
                     src: require('@/assets/image/shop/module-index.png'),
                     text: '商城首页',

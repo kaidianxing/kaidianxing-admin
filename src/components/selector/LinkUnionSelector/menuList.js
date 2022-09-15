@@ -19,7 +19,8 @@ const menuList = [
         title: '商城',
         id: '1',
         menuItem: [
-            {name: '商城页面', type: 'LinkStorePageLink'}
+            {name: '商城页面', type: 'LinkStorePageLink'},
+            {name: '自定义页面', type: 'LinkCustomPageLink'}
         ]
     },
     {

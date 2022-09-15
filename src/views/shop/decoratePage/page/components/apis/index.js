@@ -18,6 +18,7 @@ const pageTypeId = { //自定义页面的类型
     'index': 10, //首页
     'goods-detail': 11, //商品详情
     'vip-center': 12, //会员中心
+    'custom': 0, //自定义页面
     'distribution': 20, //分销页面
 };
 const diyComponent = { //自定义组件的处理
@@ -30,7 +31,7 @@ const menuTypeId = {
     'custom': 0
 }
 
-const hasMenuPage = ['index', 'vip-center']
+const hasMenuPage = ['index', 'vip-center', 'custom']
 
 function getRanGoodsId() {
     if (store.state.setting.randomGoodId) {

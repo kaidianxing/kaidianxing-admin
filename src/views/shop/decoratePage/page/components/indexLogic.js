@@ -27,6 +27,9 @@ export function previewUrl(path,previewId){
         case 'distribution':
             previewUrl = previewUrl + '/kdxCommission/index/index'
             break
+        case 'custom':
+            previewUrl = previewUrl + '/kdxCustom/index/index'
+            break
     }
     
     return utils.addQueryParams(
