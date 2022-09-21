@@ -515,7 +515,7 @@ export default {
       // 链接选择器不同的标示 0 页面地址 1 APPID 2 页面地址 3 URL
       linkFlg: 0,
       chooseTabs:
-        "store,goods,coupon,customPage,customLink,goodsClassify",
+        "store,goods,coupon,customPage,customLink,goodsClassify,customerService, LinkCustomerServiceLink",
       showUnionSelect: false,
       keywordObj: {},
       linkInfo: {

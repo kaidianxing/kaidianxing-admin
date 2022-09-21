@@ -35,7 +35,7 @@ import UnionSelector from '../selector/LinkUnionSelector'
 export default {
     inject: {
         'chooseTab': {
-            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomPageLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
+            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomPageLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink,LinkCustomerServiceLink'
         }
     },
     components: {

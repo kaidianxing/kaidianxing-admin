@@ -24,6 +24,9 @@
                 <p class="form-title" slot='label'>添加客服</p>
                 <form-item label="选择客服：">
                     <MyRadioGroup v-if="customerList.length" :items='customerList' v-model="currentModal.params.customer" key="index" @change="chooseCustomer">
+                         <div v-if='currentModal.params.customer=="wechat"'>
+                            <WxCustomerService  :currentUrl="currentModal.params" @on-change="selectCustomerLink"></WxCustomerService>
+                        </div>
                     </MyRadioGroup>
                 </form-item>
             </MyCollapse>
@@ -92,12 +95,16 @@
         'renxinyun': 'rr',
         'wx_service': 'wx',
         'customer_service': 'tx',
+        'wechat_customer_service': 'wechat'
     };
 
     export default {
         mixins: [mixin],
         name: "Customer",
         props: {},
+        components: {
+            WxCustomerService: () => import ("./WxCustomerServices.vue"),
+        },
         data() {
             return {
                 customerType: [
@@ -234,12 +241,14 @@
                 console.log(val,'currentModal.params.customer>>>>');
                 if (val === 'wx') {
                     this.currentModal.params.link_url='wx_service';
+                } else if(val == 'wechat') {
+                    this.currentModal.params.link_url='wechatCustomerService';
                 }
             },
             selectCustomerLink(val) {
                 if(val.link) {
                     this.currentModal.params.link_url=val.link;
-                    this.currentModal.params.customerName = val.username
+                    this.currentModal.params.customerName = val.name
                 }else {
                     this.currentModal.params.link_url="";
                     this.currentModal.params.customerName = ""

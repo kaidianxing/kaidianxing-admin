@@ -71,6 +71,7 @@ const MAP_LIST = {//旧版本映射
     videoLive: 'LinkVideoLiveLink',
     videoRam: 'LinkVideoRamLink',
     creditShop: 'LinkCreditShopLink',
+    customerService: 'LinkCustomerServiceLink',
 }
 
 export default {
@@ -96,7 +97,7 @@ export default {
         // 默认tab显示的tab列
         tabName: {
             type: String,
-            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomPageLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink'
+            default: 'LinkStorePageLink,LinkCouponLink,LinkCustomPageLink,LinkCustomLink,LinkCreditShopLink,LinkGoodsClassifyLink,LinkGoodsGroupLink,LinkGoodsLink,LinkLiverLink,LinkMarketingPage,LinkMerchants,LinkWxAppLink,LinkApplicationPlug,LinkVideoLiveLink,LinkVideoRamLink,LinkCustomerServiceLink'
         },
         disabledLink: {
             type: Array,

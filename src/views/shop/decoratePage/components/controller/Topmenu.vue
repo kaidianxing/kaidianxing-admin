@@ -115,7 +115,7 @@
         mixins: [mixin],
         provide: ()=>{
             return {
-                chooseTab: ''
+                chooseTab: 'customerService,LinkCustomerServiceLink'
             }
         },
         name: 'topmenu',
