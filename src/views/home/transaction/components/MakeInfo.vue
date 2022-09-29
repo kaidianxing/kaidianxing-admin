@@ -32,7 +32,7 @@
             <template #tooltip>
                 <Form :label-width="60">
                     <FormItem label="成交用户：">
-                        成功完成订单支付的用户数，同一用户多次成功支付不重复计
+                        成功完成订单支付的用户数，同一用户多次成功支付重复计
                     </FormItem>
                     <FormItem label="支付笔数：">
                         商城店铺内完成支付的订单数。
@@ -142,7 +142,7 @@ export default {
                 },
                 order_pay_member_count: {
                     name: '成交用户数',
-                    yAxis: '单位(人)'
+                    yAxis: '单位(人次)'
                 },
                 order_pay_price_sum: {
                     name: '支付金额',

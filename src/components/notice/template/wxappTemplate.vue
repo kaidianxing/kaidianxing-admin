@@ -27,6 +27,7 @@
             </FormItem>
             <FormItem class="r-form-item-checkbox" label="发送时间：">
                 <span>{{sendTime}}</span>
+                <kdx-hint-text v-if="type_code==='credit_sign_notice'">系统将在该时间点为当天未进行签到的用户发送签到提醒</kdx-hint-text>
             </FormItem>
             <FormItem class="r-form-item-checkbox" label="模板设置：">
                 <RadioGroup v-model="model.is_default">

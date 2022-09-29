@@ -31,7 +31,7 @@
             </FormItem>
             <FormItem class="r-form-item-checkbox" label="发送时间：">
                 <span>{{sendTime}}</span>
-<!--                <hint-text v-if="type_code==='creditSign_qrcode_bind_success'">系统将在该时间点为当天未进行签到的用户发送签到提醒</hint-text>-->
+                <!-- <kdx-hint-text v-if="type_code==='creditSign_qrcode_bind_success'">系统将在该时间点为当天未进行签到的用户发送签到提醒</kdx-hint-text> -->
             </FormItem>
             <FormItem class="r-form-item-checkbox" label="通知等级：" v-if="isShow_level">
                 <RadioGroup v-model="model.commission_level">

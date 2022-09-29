@@ -211,12 +211,6 @@ export default [
                 component: () =>
                         import('@/views/setting/systemAuthority/operationLog/detail.vue')
             },
-            // {
-            //     name: '应用安装',
-            //     component: () => import('@/views/setting/system/app/index.vue'),
-            //     perm: 'system.apps.index.view',
-            //     path: '/setting/system/apps/install'
-            // },
             {
                 name: '数据管理',
                 component: () => import('@/views/setting/system/tools/crontab.vue'),

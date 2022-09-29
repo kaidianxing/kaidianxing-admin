@@ -125,7 +125,37 @@
                         </form-item>
                     </div>
                 </form-item>
-
+                <form-item label='签到按钮：'>
+                    <div class='bg-color'>
+                        <form-item label="签到文字：" :label-width="100" class="mb-20">
+                            <Input v-model="currentModal.params.signtext" placeholder="请输入"
+                                   class="limit-input"
+                                   style="width: 235px"
+                                   type="text"
+                                   maxlength="4"
+                                   show-word-limit/>
+                        </form-item>
+                        <form-item label="文字颜色：" :label-width="100" class="mb-20">
+                            <MyColorPicker v-model='currentModal.style.signcolor' default='#FFFFFF'></MyColorPicker>
+                        </form-item>
+                        <form-item label="背景颜色：" :label-width="100" class="mb-20">
+                            <MyColorPicker v-model='currentModal.style.signbgcolor' default='#DF482A'></MyColorPicker>
+                        </form-item>
+                        <form-item label="透明度：" :label-width='100' class="mb-20 customDraggableProgress">
+                            <MyDraggableProgress v-model='currentModal.style.signbgopacity' :min='0' :max='100'
+                                                 :ratio='1' unit='%'></MyDraggableProgress>
+                        </form-item>
+                        <form-item label="链接：" :label-width="100" class="mb-20">
+                            <SelectLink :value='{
+                                name: currentModal.params.signlink_name,
+                                url: currentModal.params.signlink,
+                                wxappid: currentModal.params.set_wxappid
+                            }'
+                                        style="width:236px;"
+                                        @change='changeLink("set",$event)'></SelectLink>
+                        </form-item>
+                    </div>
+                </form-item>
             </MyCollapse>
         </i-form>
 

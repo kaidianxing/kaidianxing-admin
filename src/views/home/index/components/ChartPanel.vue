@@ -34,7 +34,7 @@
             </i-col>
             <i-col span="3" :class="{ checked: type === 'order_pay_member' }">
                 <div class="inner" @click="handleClick('order_pay_member')">
-                    <div class="tit">支付人数(人)</div>
+                    <div class="tit">支付人次(人次)</div>
                     <div class="number">{{ $utils.formatNumberData(data.order_pay_member) }}</div>
                     <div class="box"></div>
                 </div>

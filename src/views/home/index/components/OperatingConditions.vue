@@ -20,7 +20,7 @@
                     <FormItem label="成交总额：">已支付订单总金额(不包括退款的金额)</FormItem>
                     <FormItem label="订单数：">成交订单数 - 退款订单数</FormItem>
                     <FormItem label="笔单价：">成交金额 / 订单数</FormItem>
-                    <FormItem label="支付人数：">订单的支付人数(需剔除在筛选时间段中全部退款的支付人数(部分退款算支付人数))</FormItem>
+                    <FormItem label="支付人次：">订单的支付人次(需剔除在筛选时间段中全部退款的支付人次(部分退款算支付人次))</FormItem>
                     <FormItem label="客单价：">成交金额 / 支付人数</FormItem>
                     <FormItem>
                         <template #label>
@@ -129,8 +129,8 @@ export default {
                     yAxis: "单位(元)"
                 },
                 order_pay_member: {
-                    name: "支付人数",
-                    yAxis: "单位(人)"
+                    name: "支付人次",
+                    yAxis: "单位(人次)"
                 },
                 guest_unit_price: {
                     name: "客单价",

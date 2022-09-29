@@ -17,6 +17,14 @@
             <div class="wechat-notice">
                 <!--<div class="left">商城</div>-->
                 <div class="content">
+                    <div v-if="type_code == 'credit_sign_notice'" class="template-creditSign">
+                        <div class="template-text">办理进程通知 </div>
+                        <div class="dot">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
                     <div class="template-title">{{templateCode[type_code].wechat.title}}</div>
                     <div class="template-html">
                         <div class="flex" v-for="(item, index) in templateCode[type_code].wechat.info" :key="index">
@@ -54,10 +62,10 @@
                 </div>
                 <div class="content">
                     <div class="template-title">{{templateCode[type_code].wxapp.title}}</div>
-                    <div class="template-html">
+                    <div class="template-html" :class="type_code == 'credit_sign_notice' ? 'template-html-creditSign': ''">
                         <div class="flex" v-for="(item, index) in templateCode[type_code].wxapp.info" :key="index">
                             <div class="label">{{item.key}}</div>
-                            <div>{{item.title}}</div>
+                            <div :style="{marginLeft: type_code == 'credit_sign_notice' ? '10px':'0'} ">{{item.title}}</div>
                         </div>
                     </div>
                 </div>
@@ -163,6 +171,9 @@
                         color: #969696;
                     }
                 }
+                &.template-html-creditSign {
+                    padding-bottom:50px;
+                }
             }
         }
         .line {
@@ -211,6 +222,28 @@
                     line-height: 20px;
                     font-size: 14px;
                     color: #969696;
+                }
+                .template-creditSign {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .template-text {
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                    .dot {
+                        height: 27px;
+                        line-height: 27px;
+                        span {
+                            display: inline-block;
+                            margin-left: 3px;
+                            width: 5px;
+                            height: 5px;
+                            background-color: #c7c7cb;
+                            border-radius: 50%;
+                        }
+                    }
+
                 }
             }
         }

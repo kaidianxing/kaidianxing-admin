@@ -963,7 +963,10 @@ export const member = {
         cardbgimg: '',
         levelicon: 'iconfont-m- icon-m-huangguan2',
         financeBtn: ['0', '1', '2','3'],
-        btntext:'我的店铺'
+        btntext:'我的店铺',
+        signtext:'签到',
+        signlink_name:'积分签到',
+        signlink:'/kdxSignIn/index',
     },
     style: {
         nickcolor: '#ffffff',
@@ -976,7 +979,10 @@ export const member = {
         levelcolor: '#F2DCAC',
         setbtncolor: '#ffffff',
         setbtncolor2:'#000000',
-        linecolor: '#ffffff'
+        linecolor: '#ffffff',
+        signcolor:'#ffffff',
+        signbgcolor: '#DF482A',
+        signbgopacity:100
     },
     info: {
         avatar: '',

@@ -12,7 +12,7 @@
     <div class="data-transaction-make-panel">
         <Row>
             <Col span="6" :xs="6" :sm="6" :md="6" :lg="6" :xl="6" :xxl="6">
-                <card-panel type="blue" :image="user" title="成交用户数(人)"
+                <card-panel type="blue" :image="user" title="成交用户数(人次)"
                             :class="{checked: type === 'order_pay_member_count'}"
                             @click="handleClick('order_pay_member_count')">
                     {{$utils.formatNumberData(data.order_pay_member_count)}}

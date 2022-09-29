@@ -38,6 +38,14 @@
                     <p class="username" :style="{
                         color: componentData.style.nickcolor
                     }">{{ componentData.info.nickname || '登录/注册' }}
+                    <i
+                        class="icon-right-btn"
+                        :class="componentData.params.seticon"
+                        :style="{
+                            color: componentData.style.setbtncolor
+                        }"
+                        @click.stop="clickIcon"
+                    ></i>
                 </p>
                     <p
                         class="level"
@@ -56,14 +64,15 @@
                         }}</span>
                     </p>
                 </div>
-                <i
-                    class="icon-right-btn"
-                    :class="componentData.params.seticon"
-                    :style="{
-                        color: componentData.style.setbtncolor
-                    }"
-                    @click.stop="clickIcon"
-                ></i>
+                <!-- 积分签到-->
+                <div v-if="componentData.params.signtext.length > 1" class="signBtn-right">
+                    <div class="signBtn" :style="{
+                            color: componentData.style.signcolor,
+                            background: componentData.style.signbgcolor,
+                            opacity: parseFloat(componentData.style.signbgopacity/100).toFixed(2)
+                        }">{{ componentData.params.signtext || '' }}
+                    </div>
+                </div>
 
             </div>
             <div class="btns" v-if="getFinance.length">
@@ -130,6 +139,14 @@
                                 }"
                             >
                                 {{ componentData.info.nickname || "登录/注册" }}
+                                <i
+                                    class="icon-right-btn"
+                                    :class="componentData.params.seticon"
+                                    :style="{
+                                    color: componentData.style.setbtncolor2,
+                                }"
+                                    @click.stop="clickIcon"
+                                ></i>
                             </p>
                             <p
                                     class="level"
@@ -152,14 +169,16 @@
                                 }}</span>
                             </p>
                         </div>
-                        <i
-                            class="icon-right-btn"
-                            :class="componentData.params.seticon"
-                            :style="{
-                            color: componentData.style.setbtncolor2,
-                        }"
-                            @click.stop="clickIcon"
-                        ></i>
+                        <!-- 积分签到-->
+                        <div v-if="componentData.params.signtext.length > 1"
+                             class="signBtn-right">
+                            <div class="signBtn" :style="{
+                            color: componentData.style.signcolor,
+                            background: componentData.style.signbgcolor,
+                            opacity: parseFloat(componentData.style.signbgopacity/100).toFixed(2)
+                        }">{{ componentData.params.signtext  || ''}}
+                            </div>
+                        </div>
 
                     </div>
                     <div class="btns" v-if="getFinance.length">
@@ -426,6 +445,8 @@ export default {
                 line-height: px2rpx(16);
                 padding: px2rpx(3) 0;
                 font-weight: bold;
+                display: flex;
+                align-items: center;
             } 
             .level {
                 margin-top: px2rpx(4);
@@ -456,6 +477,19 @@ export default {
                     padding-right: px2rpx(2);
                     vertical-align: middle;
                 }
+            }
+        }
+        .signBtn-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: px2rpx(50);
+
+            .signBtn {
+                padding: px2rpx(5) px2rpx(15);
+                white-space: nowrap;
+                background: #DF482A;
+                border-radius: px2rpx(14);
             }
         }
         .btn-right{
@@ -500,6 +534,7 @@ export default {
         text-align: center;
         line-height: px2rpx(20);
         margin: auto 0;
+        padding: 0px px2rpx(5) 0 px2rpx(2);
     }
     .member_temp2{
         .btn-right{

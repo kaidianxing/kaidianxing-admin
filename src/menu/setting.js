@@ -279,7 +279,7 @@ export default {
             name: "系统设置",
             path: "/setting/system/apps/install",
             icon: "icon-xitongshezhi",
-            perm: "system.apps.index.view",
+            perm: "system.tools.crontab.view",
             children: {
                 crontab: {
                     title: "数据管理",
