@@ -47,6 +47,7 @@ const menuList = [
             {name: '视频号动态', type: 'LinkVideoRamLink'},
             {name: '积分商品', type: 'LinkCreditShopLink'},
             {name: '微信客服', type: 'LinkCustomerServiceLink'},
+            {name: '专题文章', type: 'LinkArticleLink'},
         ]
     }, {
         title: '其他',

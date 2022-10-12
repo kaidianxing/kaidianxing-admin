@@ -72,6 +72,7 @@ const MAP_LIST = {//旧版本映射
     videoRam: 'LinkVideoRamLink',
     creditShop: 'LinkCreditShopLink',
     customerService: 'LinkCustomerServiceLink',
+    article: 'LinkArticleLink',
 }
 
 export default {
