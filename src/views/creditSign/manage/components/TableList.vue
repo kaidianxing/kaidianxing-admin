@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { formatDate } from '@/assets/util'
+import { formatDate } from '@/assets/helpers'
 
 export default {
     name: "TableList",

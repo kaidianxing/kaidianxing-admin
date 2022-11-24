@@ -42,6 +42,12 @@ export default [
                 component: () => import('@/views/shop/themeSetting/index.vue')
             },
             {
+                name: '素材库',
+                path: '/shop/material/index',
+                perm: '',
+                component: () => import('@/views/shop/material/index.vue')
+            },
+            {
                 name: '自定义菜单',
                 path: '/shop/custom-menu',
                 perm: '',

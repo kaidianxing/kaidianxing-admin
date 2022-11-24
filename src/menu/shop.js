@@ -78,7 +78,14 @@ export default {
                     path: '/shop/module/vip',
                     perm:'',
                     show:false
-                }
+                },
+                material: {
+                    title: '素材库',
+                    name: '素材库',
+                    path: '/shop/material/index',
+                    perm: '',
+                    show: true,
+                },
             }
         },
     }

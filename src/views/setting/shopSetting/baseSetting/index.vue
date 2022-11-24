@@ -133,6 +133,16 @@
                     <FormItem label="协议内容：" prop="agreement_content">
                         <editor v-model="model.agreement_content" @input="contentInput" :height="667"></editor>
                     </FormItem>
+                    <kdx-form-title>基本设置</kdx-form-title>
+                    <FormItem
+                            label="全局代码统计："
+                            prop="statistics"
+                    >
+                        <Input  type="textarea"
+                                :autosize="{minRows: 5}"
+                                v-model="model.global_code"
+                        ></Input>
+                    </FormItem>
                 </div>
             </Form>
         </div>
@@ -175,7 +185,8 @@ export default {
                 loading: '',
                 photo_preview: '1',
                 agreement_name: '用户注册使用协议',
-                agreement_content: '用户注册使用协议'
+                agreement_content: '用户注册使用协议',
+                global_code: ""
             },
             rules: {
                 mall_status: [
@@ -237,11 +248,12 @@ export default {
         },
         getData() {
             this.$api.settingApi.getBaseSetting({}).then(res => {
-                let {error, shop_info, ...info} = res;
+                let {error, shop_info, global_code, ...info} = res;
                 if (error === 0) {
                     this.model = {
                         ...this.model,
-                        ...info
+                        ...info,
+                        global_code: global_code,
                     };
                     this.shop_info = shop_info || {}
                     this.$store.commit('config/setBaseSetting', info);

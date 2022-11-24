@@ -19,6 +19,16 @@ export const accessoryApi = {
         method: 'get',
         api: 'manage/utility/attachment/group/get-list',
     },
+    // 修改图片分组
+    changeImageGroup: {
+        method: 'post',
+        api: 'manage/utility/attachment/list/change-group',
+    },
+    // 修改图片名称
+    changeImageName: {
+        method: 'post',
+        api: 'manage/utility/attachment/list/rename',
+    },
     // 上传文件 10图片、20视频、30音频
     uploadFile: {
         method: 'post',
