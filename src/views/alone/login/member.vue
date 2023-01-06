@@ -12,36 +12,24 @@
     <div class="container">
         <div class="form-title">个人账号资料设置</div>
         <Form class="form" :label-width="120" :model="model" ref="form" @submit.native.prevent>
-            <form-item label="登录账号：">
+            <form-item label="登录账号：" style="margin-bottom: 10px;">
                 <div class="user-account">
                     <span class="user-mobile">{{ username }}</span>
+                </div>
+            </form-item>
+            <form-item label="登录密码：">
+                <div class="user-account">
+                    <span class="user-mobile">********</span>
                     <log-button type="text" @click="toSetPass"
-                        >修改密码</log-button
+                    >修改密码</log-button
                     >
                 </div>
             </form-item>
             <form-item label="个人头像：">
-                <Avatar v-model="model.avatar" />
+                <Avatar v-model="model.avatar" prop="name"/>
                 <kdx-hint-text>建议尺寸：200x200px</kdx-hint-text>
             </form-item>
-            <div v-for="(item, index) in model.form_info" :key="index">
-                <form-item
-                    v-if="item.enabled=='1'"
-                    :label="item.name + '：'"
-                    :prop="`form_info.${index}.value`"
-                    :rules="{
-                        required: item.required == '1',
-                        message: `${item.name}必填`,
-                    }"
-                >
-                    <Input
-                        class="form-input"
-                        v-model="item.value"
-                        :placeholder="item.name"
-                    />
-                </form-item>
-            </div>
-            <div class="btn" @click="validate">保存</div>
+            <div class="btn" @click="setUserInfo">保存</div>
         </Form>
         <!-- 修改密码 -->
         <alone-modal v-model="showModal" width="510" title="修改密码">
@@ -97,7 +85,6 @@ export default {
         return {
             model: {
                 avatar: '',
-                form_info: []
             },
             passModel: {
                 original_password: '',
@@ -133,21 +120,10 @@ export default {
                 this.$api.aloneApi.getUserRegist().then(res => {
                     if (res.error == 0) {
                         let { username, profile } = res.user_info
-                        let { register_info } = res.setting
-                        let formList = register_info.map(item => ({ ...item, value: '' }))
-
                         if (profile) {
-                            let { avatar, form_info } = profile
+                            let { avatar } = profile
                             this.model.avatar = avatar || ''
-                            if (form_info) {
-                                let obj = {}
-                                form_info.forEach(item => {
-                                    obj[item.key] = item.value
-                                })
-                                formList = formList.map(item => ({ ...item, value: obj[item.key] || '' }))
-                            }
                         }
-                        this.model.form_info = formList
                         this.username = username
                         this.$store.commit('alone/setUserInfo', res.user_info)
                         resolve()
@@ -169,6 +145,9 @@ export default {
                     this.getUserInfo().then(() => {
                         this.handleAjust(res.audit_status)
                     })
+                    setTimeout(()=>{
+                        this.$router.go(-1);
+                    },500)
                 }
             })
         },

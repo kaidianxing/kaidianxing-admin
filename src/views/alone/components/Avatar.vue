@@ -133,6 +133,9 @@ export default {
     width: 70px;
     height: 70px;
 }
+.avatar {
+    display: block;
+}
 .avatar-img {
     display: block;
 }

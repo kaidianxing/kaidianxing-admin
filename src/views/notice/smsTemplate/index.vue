@@ -52,7 +52,7 @@
                 <FormItem label="短信签名：" prop="sms_sign">
                     <Input class="width-340" v-model="temData.sms_sign" placeholder="请输入签名" maxlength="12"
                            show-word-limit></Input>
-                    <kdx-hint-text>在阿里云短息平台申请且审核通过的短信签名</kdx-hint-text>
+                    <kdx-hint-text>在阿里云短信平台申请且审核通过的短信签名</kdx-hint-text>
                 </FormItem>
                 <FormItem label="状态：" prop="state" class="r-form-item-checkbox">
                     <RadioGroup v-model="temData.state">
